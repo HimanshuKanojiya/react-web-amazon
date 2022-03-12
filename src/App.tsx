@@ -17,7 +17,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {faker.name.firstName()}
+            This is development branch - akka staging
           </a>
         </header>
       </div>
