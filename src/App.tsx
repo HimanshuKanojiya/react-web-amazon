@@ -17,7 +17,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            This is development branch - akka staging
+            This is staging branch
           </a>
         </header>
       </div>
