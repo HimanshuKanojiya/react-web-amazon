@@ -17,7 +17,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            This is staging branch
+            This is staging branch, so development will be saved here first
           </a>
         </header>
       </div>
