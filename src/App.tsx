@@ -9,7 +9,7 @@ function App() {
     <Provider store={amazonStore}>
       <div className="App">
         <header className="App-header">
-          <img src={faker.image.animals()} className="App-logo" alt="logo" />
+          <img src={faker.image.abstract()} className="App-logo" alt="logo" />
           <p>{faker.name.firstName(0)}</p>
           <a
             className="App-link"
