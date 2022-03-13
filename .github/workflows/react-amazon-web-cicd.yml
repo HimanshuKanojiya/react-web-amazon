@@ -22,7 +22,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - name: Install Dependencies
     - run: yarn install
-    - name: yarn test 
     - run: CI=true yarn test --coverage
