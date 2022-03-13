@@ -2,17 +2,9 @@ name: React Web Amazon CI & CD Workflow
 
 on:
   push:
-    branches:
-      - master
-      - develop
-      - 'feature/**'
-      - 'release/**'
+    branches: [master, develop, 'feature/**', 'release/**']
   pull_request:
-    branches: 
-      - master
-      - develop
-      - 'feature/**'
-      - 'release/**'
+    branches: [master, develop, 'feature/**', 'release/**']
 
 jobs:
   build:
