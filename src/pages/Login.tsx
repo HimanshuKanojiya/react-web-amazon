@@ -3,7 +3,7 @@ import React from "react";
 const Login: React.FC = () => {
   return (
     <>
-      <p>Login Page</p>
+      <p>Login Page CHECK</p>
     </>
   );
 };
