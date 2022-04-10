@@ -22,6 +22,18 @@ export const GlobalCSS = createGlobalStyle`
         font-size: ${({ theme }) => theme.fontSize.h4};
     }
     p {
+        font-family: "Amazon Ember", sans-serif;
         font-size: ${({ theme }) => theme.fontSize.bodyLarge};
+    }
+    span{
+        font-family: "Amazon Ember", sans-serif;
+        font-size: ${({ theme }) => theme.fontSize.bodySmall}
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoint.tabletMinWidth}){
+        span{
+            font-family: "Amazon Ember", sans-serif;
+            font-size: ${({ theme }) => theme.fontSize.bodySmall}
+        } 
     }
 `;
