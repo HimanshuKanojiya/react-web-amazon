@@ -8,6 +8,7 @@ const Home: React.FC = () => {
       <h3>This is home page</h3>
       <h4>This is home page</h4>
       <p>This is home page</p>
+      <span>This is home page</span>
     </>
   );
 };
