@@ -1,3 +1,0 @@
-interface IAuthenticateState {
-  isUserSignedIn: boolean;
-}
