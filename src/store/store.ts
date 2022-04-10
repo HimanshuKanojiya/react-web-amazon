@@ -1,10 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import Authenticate from "./slices/authenticate/Authenticate";
 
 export const amazonStore = configureStore({
-  reducer: {
-    authenticate: Authenticate,
-  },
+  reducer: {},
 });
 
 export type RootState = ReturnType<typeof amazonStore.getState>;
