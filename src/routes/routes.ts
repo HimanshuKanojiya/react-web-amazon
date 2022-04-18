@@ -1,21 +1,21 @@
 import React from "react";
 
-const home = React.lazy(() => import("../pages/Home"));
+const homePage = React.lazy(() => import("../pages/Home"));
 
-const login = React.lazy(() => import("../pages/Login"));
+const loginPage = React.lazy(() => import("../pages/Login"));
 
 const routes: Routes = [
   {
     namePattern: "homePage",
     path: "/",
-    pageComponent: home,
+    pageComponent: homePage,
     isProtectedPage: true,
   },
   {
     namePattern: "loginPage",
     path: "login",
-    pageComponent: login,
-    isProtectedPage: true,
+    pageComponent: loginPage,
+    isProtectedPage: false,
   },
 ];
 

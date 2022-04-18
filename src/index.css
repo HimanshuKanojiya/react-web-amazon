@@ -82,8 +82,12 @@
   font-weight: 800;
 }
 
+:root {
+  --amazon-regular-ember: "Amazon Ember Regular";
+}
+
 * {
-  font-family: "Amazon Ember Regular", sans-serif;
+  font-family: var(--amazon-regular-ember), sans-serif;
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;

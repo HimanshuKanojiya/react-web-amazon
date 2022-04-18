@@ -16,6 +16,7 @@ declare module "styled-components" {
         black: string;
         white: string;
         orange: string;
+        orange_2: string;
       };
       secondary: {
         darkBlack: string;
@@ -29,6 +30,9 @@ declare module "styled-components" {
         grey: string;
         darkGrey: string;
         disabledGrey: string;
+      };
+      gradient: {
+        gradient1: string;
       };
     };
     spaces: {
@@ -78,11 +82,12 @@ export const theme: DefaultTheme = {
       black: "#000000",
       white: "#FFFFFF",
       orange: "#F19D38",
+      orange_2: "#e77600",
     },
     secondary: {
       darkBlack: "#141920",
       mediun: "#252F3D",
-      blue: "#007185",
+      blue: "#0066c0",
       red: "#B12704",
       yellow: "#F4BF76",
       darkYellow: "#F2A742",
@@ -91,6 +96,9 @@ export const theme: DefaultTheme = {
       grey: "#DDDDDD",
       darkGrey: "#C9CCCC",
       disabledGrey: "#565959",
+    },
+    gradient: {
+      gradient1: "linear-gradient(to bottom, #f7dfa5, #f0c14b)",
     },
   },
   spaces: {
