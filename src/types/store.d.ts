@@ -19,4 +19,11 @@ interface ISignUp {
   userPhone: string;
   userEmail?: string;
   userPassword: string;
+  inputUIValidation: {
+    isFormOkayToSubmit: boolean;
+    isUserNameValid: boolean;
+    isUserPhoneValid: boolean;
+    isUserEmailValid: boolean;
+    isUserPasswordValid: boolean;
+  };
 }

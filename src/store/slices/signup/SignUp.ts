@@ -10,6 +10,13 @@ export const SignUp = createSlice({
     userPassword: "",
     userEmail: "",
     userPhone: "",
+    inputUIValidation: {
+      isFormOkayToSubmit: false,
+      isUserNameValid: false,
+      isUserEmailValid: false,
+      isUserPhoneValid: false,
+      isUserPasswordValid: false,
+    },
   } as ISignUp,
   reducers: {
     addFullName: (state, action) => {
