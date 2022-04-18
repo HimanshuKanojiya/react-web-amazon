@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FormContainer = styled.div`
   width: 348px;
-  height: 280px;
+  height: fit-content;
   padding: 20px 26px;
   border: 1px solid;
   border-radius: 2px;
@@ -61,6 +61,61 @@ export const FormContainer = styled.div`
         &:hover {
           color: #e77600;
           text-decoration: underline;
+        }
+      }
+    }
+
+    & .expand-option {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: ${({ theme }) => theme.spaces.m};
+
+      & .expand-option-need-help {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: transparent;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+
+        & svg {
+          background-color: transparent;
+          color: #767676;
+          width: 12px;
+          height: 12px;
+        }
+
+        & p {
+          font-size: 13px;
+          color: ${({ theme }) => theme.colors.secondary.blue};
+
+          &:hover {
+            text-decoration: underline;
+            color: ${({ theme }) => theme.colors.primary.orange_2};
+          }
+        }
+      }
+
+      & .extended-options-list {
+        margin-left: 12px;
+
+        & li {
+          list-style-type: none;
+          font-size: 13px;
+          margin-top: ${({ theme }) => theme.spaces.xxs};
+
+          & a {
+            text-decoration: none;
+            color: ${({ theme }) => theme.colors.secondary.blue};
+
+            &:hover {
+              text-decoration: underline;
+              color: ${({ theme }) => theme.colors.primary.orange_2};
+              cursor: pointer;
+            }
+          }
         }
       }
     }

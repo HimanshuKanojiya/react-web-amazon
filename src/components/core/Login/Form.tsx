@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { FormContainer } from "components/styles/Login/FormContainer";
+import { Link } from "react-router-dom";
+import { amazonIcons } from "../../../assets/icons/index";
 import { DefaultActionBasedButton } from "../Button/DefaultActionBasedButton";
 import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
 import {
@@ -10,11 +12,14 @@ import {
 export const Form: React.FC = () => {
   const [isPasswordSectionEnable, updatePasswordSection] =
     useState<boolean>(false);
+  const [isNeedHelpExtended, updateNeedHelpExtend] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
   const { userEmail, userPassword, inputUIValidation } = useAppSelector(
     (state) => state.authenticate
   );
+
+  const { ExtendOption, LessOption } = amazonIcons;
 
   const enablePasswordSection = () => {
     if (!inputUIValidation.isUserEmailValid) return;
@@ -55,6 +60,26 @@ export const Form: React.FC = () => {
               By continuing, you agree to Amazon's
               <a href="/">Condition of use</a>and<a href="/">Privacy Notice</a>
             </p>
+            <div className="expand-option">
+              <button
+                type="button"
+                className="expand-option-need-help"
+                onClick={() => updateNeedHelpExtend((prevState) => !prevState)}
+              >
+                {!isNeedHelpExtended ? <ExtendOption /> : <LessOption />}
+                <p>Need help?</p>
+              </button>
+              {isNeedHelpExtended && (
+                <ul className="extended-options-list">
+                  <li>
+                    <Link to="/">Forgot Password</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Other issues with Sign-In</Link>
+                  </li>
+                </ul>
+              )}
+            </div>
           </>
         )}
         {isPasswordSectionEnable && (
@@ -74,6 +99,7 @@ export const Form: React.FC = () => {
                 name="user-password"
                 id="user-password"
                 className="user-password"
+                autoComplete="false"
                 value={userPassword}
                 onChange={(e) =>
                   dispatch(addUserPassword(e.currentTarget.value))
