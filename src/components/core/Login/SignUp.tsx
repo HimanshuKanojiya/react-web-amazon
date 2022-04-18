@@ -1,6 +1,6 @@
 import React from "react";
 import { LoginContainer } from "components/styles/Login/LoginContainer";
-import { DefaultGreyButton } from "components/core/Button/DefaultGreyButton";
+import { SignUpForm } from "./SignUpForm";
 import { amazonIcons } from "assets/icons";
 
 export const SignUp: React.FC = () => {
@@ -11,19 +11,7 @@ export const SignUp: React.FC = () => {
       <a className="amazon-logo" href="/">
         <img src={AmazonLogoIcon} alt="amazon-logo" />
       </a>
-
-      {/* <Form /> */}
-      <div className="sign-up-option">
-        <div className="new-to-amazon-headline">
-          <span />
-          <p>New to Amazon?</p>
-          <span />
-        </div>
-        <DefaultGreyButton
-          ctaLink="/sign-up"
-          ctaText="Create your Amazon Account"
-        />
-      </div>
+      <SignUpForm />
     </LoginContainer>
   );
 };
