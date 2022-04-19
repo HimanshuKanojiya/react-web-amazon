@@ -9,6 +9,7 @@ export const SignUp = createSlice({
     userName: "",
     userPassword: "",
     userEmail: "",
+    userCountryCode: "",
     userPhone: "",
     inputUIValidation: {
       isFormOkayToSubmit: false,
@@ -31,10 +32,18 @@ export const SignUp = createSlice({
     addUserPhone: (state, action) => {
       state.userPhone = action.payload;
     },
+    addUserCountryCode: (state, action) => {
+      state.userCountryCode = action.payload;
+    },
   },
 });
 
-export const { addFullName, addUserEmail, addUserPassword, addUserPhone } =
-  SignUp.actions;
+export const {
+  addFullName,
+  addUserEmail,
+  addUserPassword,
+  addUserPhone,
+  addUserCountryCode,
+} = SignUp.actions;
 
 export default SignUp.reducer;

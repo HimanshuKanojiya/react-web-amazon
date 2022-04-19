@@ -16,6 +16,7 @@ interface ISignUp {
   error: null;
   data: string | null;
   userName: string;
+  userCountryCode: string;
   userPhone: string;
   userEmail?: string;
   userPassword: string;

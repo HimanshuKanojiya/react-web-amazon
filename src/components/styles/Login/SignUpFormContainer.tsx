@@ -29,9 +29,40 @@ export const SignUpFormContainer = styled.div`
       font-size: 13px;
     }
 
+    & .user-phone-section {
+      display: flex;
+      align-items: flex-start;
+
+      & .user-country-code {
+        width: 100px;
+        margin-right: ${({ theme }) => theme.spaces.xs};
+        background-color: #e7e9ec;
+        font-size: 13px;
+        text-indent: 1px;
+        text-overflow: "";
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+
+        & option {
+          background-color: ${({ theme }) => theme.colors.primary.white};
+          font-size: 13px;
+          margin: ${({ theme }) => theme.spaces.s};
+        }
+      }
+
+      & .user-phone-input-section {
+        width: 100%;
+      }
+    }
+
     & .user-name,
     & .user-password,
-    & .user-email {
+    & .user-email,
+    & .user-phone,
+    & .user-country-code {
       width: 100%;
       height: 32px;
       padding: 4px 8px;
@@ -45,6 +76,30 @@ export const SignUpFormContainer = styled.div`
       &:focus {
         border-color: #e77600;
         box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+      }
+    }
+
+    & .user-password-info,
+    .user-info-error {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      color: #2b2b2b;
+      margin-bottom: ${({ theme }) => theme.spaces.xs};
+
+      & svg {
+        color: ${({ theme }) => theme.colors.secondary.blue};
+        width: 12px;
+        height: 12px;
+        margin-right: ${({ theme }) => theme.spaces.xxs};
+      }
+    }
+
+    & .user-info-error {
+      color: ${({ theme }) => theme.colors.secondary.red};
+
+      & svg {
+        color: ${({ theme }) => theme.colors.secondary.red};
       }
     }
 
