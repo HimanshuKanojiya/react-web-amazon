@@ -58,7 +58,8 @@ export const Form: React.FC = () => {
             />
             <p className="terms-and-condition-disclaimer">
               By continuing, you agree to Amazon's
-              <a href="/">Condition of use</a>and<a href="/">Privacy Notice</a>
+              <Link to="/">Condition of use</Link>and
+              <Link to="/">Privacy Notice</Link>
             </p>
             <div className="expand-option">
               <button
@@ -99,7 +100,7 @@ export const Form: React.FC = () => {
                 name="user-password"
                 id="user-password"
                 className="user-password"
-                autoComplete="false"
+                autoComplete="off"
                 value={userPassword}
                 onChange={(e) =>
                   dispatch(addUserPassword(e.currentTarget.value))
