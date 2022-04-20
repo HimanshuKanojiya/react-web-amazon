@@ -1,7 +1,7 @@
 interface IUsePerformLoginUseCase {
   userEmail: string;
   userPassword: string;
-  firebaseAuth: Auth;
+  firebaseAuth?: Auth;
 }
 
 interface IUsePerformSignOutUseCase {

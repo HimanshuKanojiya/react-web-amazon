@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
 import {
   Auth,
   getAuth,
@@ -31,7 +31,7 @@ export const useFirebaseCore = () => {
   const initializeFirebaseApp = (
     firebaseConfig: IGetFireBaseConfig
   ): IInitializeFirebaseApp => {
-    return firebase.initializeApp(firebaseConfig);
+    return initializeApp(firebaseConfig);
   };
 
   const getFirebaseAuthApp = (initializeApp: IInitializeFirebaseApp): Auth => {

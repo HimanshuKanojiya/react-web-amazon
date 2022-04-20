@@ -5,7 +5,7 @@ interface FirebaseProvider {
 interface IperformSignIn {
   userEmail: string;
   userPassword: string;
-  firebaseAuth: Auth;
+  firebaseAuth?: Auth;
 }
 
 interface IperformSignOut {
