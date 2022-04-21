@@ -29,6 +29,14 @@ In case, if you want to run this project in local, you need to do (for now, as i
 
 **Project staging/development link:** [Staing link](https://react-web-stg-amazon.vercel.app/)
 
+**Note:**
+If you face module not found issue in vercel, then please run these one by one:
+
+- git rm -r --cached .
+- git add --all .
+- git commit -am "Fix casing discrepancies."
+- git push origin branch_name
+
 **To connect with developer, please feel free to reach me at**
 
 - Email: himanshukanojiya825@gmail.com
