@@ -1,6 +1,6 @@
 import { useFirebaseProvider } from "service/provider/firebase/useFirebaseProvider";
 
-export const usePerformSignOutUseCase = async ({
+export const useSignOutPerformUseCase = async ({
   firebaseAuth,
 }: IUsePerformSignOutUseCase): Promise<void> => {
   const firebaseProvider = useFirebaseProvider();
