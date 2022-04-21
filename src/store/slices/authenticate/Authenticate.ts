@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { Auth, User } from "firebase/auth";
-import { usePerformLoginUseCase } from "../../../service/useCases/authenticateUseCases/usePerformLoginUseCase";
+import { usePerformSignInUseCase } from "../../../service/useCases/authenticateUseCases/usePerformSignInUseCase";
 import { useGetFirebaseAuthUseCase } from "../../../service/useCases/authenticateUseCases/useGetFirebaseAuthUseCase";
 
 export const performSignInToFirebase = createAsyncThunk<
@@ -11,7 +11,7 @@ export const performSignInToFirebase = createAsyncThunk<
   async ({ userEmail, userPassword }, { rejectWithValue }) => {
     try {
       const Auth = useGetFirebaseAuthUseCase();
-      const user = await usePerformLoginUseCase({
+      const user = await usePerformSignInUseCase({
         userEmail,
         userPassword,
         firebaseAuth: Auth,

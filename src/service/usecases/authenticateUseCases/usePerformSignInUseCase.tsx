@@ -1,7 +1,7 @@
 import { User } from "firebase/auth";
 import { useFirebaseProvider } from "service/provider/firebase/useFirebaseProvider";
 
-export const usePerformLoginUseCase = async ({
+export const usePerformSignInUseCase = async ({
   userEmail,
   userPassword,
   firebaseAuth,
