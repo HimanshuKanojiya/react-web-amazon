@@ -29,8 +29,8 @@ In case, if you want to run this project in local, you need to do (for now, as i
 
 **Project staging/development link:** [Staing link](https://react-web-stg-amazon.vercel.app/)
 
-**Note:**
-If you face module not found issue in vercel, then please run these one by one:
+**Note: - For Dev**
+If you face "module not found issue" in vercel during preview, then please run these one by one:
 
 - git rm -r --cached .
 - git add --all .
