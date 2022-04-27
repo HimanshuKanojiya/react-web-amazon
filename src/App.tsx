@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import routes from "./routes/routes";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { GlobalCSS } from "components/styles/GlobalCSS";
-import AuthWrapper from "helper/authWrapper/AuthWrapper";
+import PageAuthWrapper from "helper/authWrapper/PageAuthWrapper";
 import { ThemeProvider } from "styled-components";
 import { theme } from "theme/theme";
 import Defaultlayout from "components/styles/DefaultLayout";
@@ -32,9 +32,9 @@ function App() {
                     element={
                       <React.Suspense fallback={<>Loading...</>}>
                         {isProtectedPage ? (
-                          <AuthWrapper>
+                          <PageAuthWrapper>
                             <Page />
-                          </AuthWrapper>
+                          </PageAuthWrapper>
                         ) : (
                           <Page />
                         )}

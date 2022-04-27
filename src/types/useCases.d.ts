@@ -11,3 +11,5 @@ interface IUsePerformSignOutUseCase {
 interface IUseGetFirebaseAuthUseCase {
   firebaseAuth: Auth;
 }
+
+type IUseGetAuthFromLocalUseCase = (key: string) => null | Auth;

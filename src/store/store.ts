@@ -10,8 +10,11 @@ export const amazonStore = configureStore({
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
       serializableCheck: {
-        ignoredPaths: ["authenticate.data", "authenticate.userAuth"],
-        ignoredActionPaths: ["payload.auth", "payload.userData"],
+        ignoredPaths: [
+          "authenticate.currentUserData",
+          "authenticate.currentUserdata.currentUserData",
+        ],
+        ignoredActionPaths: ["payload.currentUserData"],
       },
     });
   },

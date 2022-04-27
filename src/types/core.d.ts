@@ -5,5 +5,12 @@ interface DefaultButtonProps {
 
 interface DefaultActionBasedButtonProps {
   ctaText: string;
-  ctaAction: () => void;
+  ctaAction?: () => void;
+  type: "submit" | "button";
+  isDisabled: boolean;
+}
+
+interface DefaultErrorProps {
+  title: string;
+  issueText: string;
 }

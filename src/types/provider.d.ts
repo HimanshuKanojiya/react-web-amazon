@@ -11,3 +11,8 @@ interface IperformSignIn {
 interface IperformSignOut {
   firebaseAuth: Auth;
 }
+
+interface IUseLocalStorageProvider {
+  getDataFromLocalStorage: (key: string) => string | any;
+  setDataToLocalStorage: (key: string, item: any) => void;
+}

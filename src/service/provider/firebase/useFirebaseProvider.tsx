@@ -26,7 +26,7 @@ export const useFirebaseProvider = () => {
   const performSignOut = async ({
     firebaseAuth,
   }: IperformSignOut): Promise<void> => {
-    return await fireBaseCore.performSignOut(firebaseAuth);
+    return await fireBaseCore.performSignOut({ FirebaseAuth: firebaseAuth });
   };
 
   return {

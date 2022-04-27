@@ -1,24 +1,41 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Auth, User } from "firebase/auth";
+import { User } from "firebase/auth";
 import { useLoginPerformUseCase } from "service/useCases/authenticateUseCases/useLoginPerformUseCase";
+import { useSignOutPerformUseCase } from "service/useCases/authenticateUseCases/useSignOutPerformUseCase";
 import { useFirebaseAuthGetUseCase } from "service/useCases/authenticateUseCases/useFirebaseAuthGetUseCase";
+import { useGetLoginErrorUseCase } from "service/useCases/firebaseErrorIndentifier/useGetLoginErrorUseCase";
 
 export const performSignInToFirebase = createAsyncThunk<
-  { auth: Auth; userData: User },
+  { currentUserData: User },
   IperformSignIn
 >(
   "authenticate/signIn",
   async ({ userEmail, userPassword }, { rejectWithValue }) => {
     try {
-      const Auth = useFirebaseAuthGetUseCase();
+      const auth = await useFirebaseAuthGetUseCase();
       const user = await useLoginPerformUseCase({
         userEmail,
         userPassword,
-        firebaseAuth: Auth,
+        firebaseAuth: auth,
       });
-      return { auth: Auth, userData: user };
+
+      return { currentUserData: user };
     } catch (error: any) {
-      return rejectWithValue(error.message);
+      const { getErrorName } = useGetLoginErrorUseCase();
+      return rejectWithValue(getErrorName(error.message));
+    }
+  }
+);
+
+export const performSignOutFromFirebase = createAsyncThunk(
+  "authenticate/signOut",
+  async (_, { rejectWithValue }) => {
+    try {
+      const auth = await useFirebaseAuthGetUseCase();
+      const user = await useSignOutPerformUseCase({ firebaseAuth: auth });
+      return user;
+    } catch (error: any) {
+      rejectWithValue(error.message);
     }
   }
 );
@@ -28,53 +45,118 @@ const Authenticate = createSlice({
   initialState: {
     loading: false,
     error: null,
-    data: null,
-    userAuth: null,
+    currentUserdata: null,
     isUserSignedIn: false,
     userEmail: "",
     userPassword: "",
+    isLoginInputValid: false,
     inputUIValidation: {
       isUserEmailValid: false,
       isPasswordValid: false,
     },
   } as IAuthenticateState,
   reducers: {
-    addUserEmail: (state, action) => {
-      state.userEmail = action.payload;
+    addLoginInfo: (state, action) => {
+      const { inputName, inputValue } = action.payload;
+
+      switch (inputName) {
+        case "addUserEmail":
+          state.userEmail = inputValue;
+          break;
+        case "addUserPassword":
+          state.userPassword = inputValue;
+          break;
+      }
     },
-    addUserPassword: (state, action) => {
-      state.userPassword = action.payload;
-    },
-    login: (state) => {
+    doLogin: (state) => {
       state.isUserSignedIn = true;
     },
-    logout: (state) => {
+    doLogout: (state) => {
       state.isUserSignedIn = false;
+    },
+    verifyLoginInputs: (state, action) => {
+      const emailExpression =
+        /^[a-zA-Z0-9]+[a-zA-Z0-9-+_.]+@[a-zA-Z0-9+-]+\.([a-zA-Z0-9.])+/g;
+
+      state.isLoginInputValid = false;
+
+      if (!action.payload.userEmail) return;
+
+      if (action.payload.userEmail.length <= 6) return;
+
+      if (action.payload.userEmail.match(emailExpression) === null) return;
+
+      if (action.payload.userEmail.match(emailExpression).length !== 1) return;
+
+      if (action.payload.userEmail.split("@").length > 2) return;
+
+      if (!action.payload.userPassword) return;
+
+      if (action.payload.userPassword.length < 6) return;
+
+      state.isLoginInputValid = true;
+    },
+    validateUserInputs: (state, action) => {
+      const { inputName, inputValue } = action.payload;
+
+      switch (inputName) {
+        case "isLoginEmailValid":
+          state.inputUIValidation.isUserEmailValid = inputValue;
+          break;
+
+        case "isLoginPasswordValid":
+          state.inputUIValidation.isPasswordValid = inputValue;
+          break;
+      }
     },
   },
   extraReducers: (builder) => {
     builder.addCase(performSignInToFirebase.pending, (state) => {
       state.loading = true;
       state.error = null;
-      state.data = null;
+      state.currentUserdata = null;
+      state.isUserSignedIn = false;
     });
 
     builder.addCase(performSignInToFirebase.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
-      state.data = null;
+      state.currentUserdata = null;
+      state.isUserSignedIn = false;
     });
 
     builder.addCase(performSignInToFirebase.fulfilled, (state, action) => {
       state.loading = false;
       state.error = null;
-      state.userAuth = action.payload.auth;
-      state.data = action.payload.userData;
+      state.currentUserdata = action.payload;
+      state.isUserSignedIn = action.payload ? true : false;
+    });
+
+    builder.addCase(performSignOutFromFirebase.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+
+    builder.addCase(performSignOutFromFirebase.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+
+    builder.addCase(performSignOutFromFirebase.fulfilled, (state) => {
+      state.loading = false;
+      state.currentUserdata = null;
+      state.error = null;
+      state.isUserSignedIn = false;
     });
   },
 });
 
-export const { login, logout, addUserEmail, addUserPassword } =
-  Authenticate.actions;
+export const {
+  doLogin,
+  doLogout,
+  addLoginInfo,
+  validateUserInputs,
+  verifyLoginInputs,
+} = Authenticate.actions;
 
 export default Authenticate.reducer;

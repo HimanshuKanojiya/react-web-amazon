@@ -18,3 +18,8 @@ interface IPerformSigUpUsingEmailPassword {
 interface IPerformSignOut {
   FirebaseAuth: Auth;
 }
+
+interface IUseBrowserStorage {
+  getLocalStorageItem: (key: string) => string | any;
+  setLocalStorageItem: (key: string, item: any) => void;
+}

@@ -2,6 +2,8 @@ import { initializeApp } from "firebase/app";
 import {
   Auth,
   getAuth,
+  setPersistence,
+  browserSessionPersistence,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
@@ -43,11 +45,12 @@ export const useFirebaseCore = () => {
     userPassword,
     firebaseAuth,
   }: IPerformSigUpUsingEmailPassword) => {
+    await setPersistence(firebaseAuth, browserSessionPersistence);
     return signInWithEmailAndPassword(firebaseAuth, userEmail, userPassword);
   };
 
   const performSignOut = async ({ FirebaseAuth }: IPerformSignOut) => {
-    return signOut(FirebaseAuth);
+    return await signOut(FirebaseAuth);
   };
 
   return {
