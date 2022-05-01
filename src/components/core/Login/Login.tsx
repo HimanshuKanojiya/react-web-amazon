@@ -17,16 +17,7 @@ export const Login: React.FC = () => {
       </a>
 
       {error && (
-        <Error
-          title="There was a problem"
-          issueText={
-            error === "FIREBASE_USER_NOT_FOUND"
-              ? "We cannot find an account with that email address"
-              : error === "FIREBASE_WRONG_PASSWORD"
-              ? "Your password is incorrect"
-              : "Something is wrong!"
-          }
-        />
+        <Error title="There was a problem" issueText={error.errorMessage} />
       )}
 
       <Form />

@@ -7,7 +7,10 @@ import { useGetLoginErrorUseCase } from "service/useCases/firebaseErrorIndentifi
 
 export const performSignInToFirebase = createAsyncThunk<
   { currentUserData: User },
-  IperformSignIn
+  IperformSignIn,
+  {
+    rejectValue: { errorType: string; errorMessage: string };
+  }
 >(
   "authenticate/signIn",
   async ({ userEmail, userPassword }, { rejectWithValue }) => {
@@ -22,23 +25,27 @@ export const performSignInToFirebase = createAsyncThunk<
       return { currentUserData: user };
     } catch (error: any) {
       const { getErrorName } = useGetLoginErrorUseCase();
-      return rejectWithValue(getErrorName(error.message));
+      const getError = getErrorName(error.message);
+      return rejectWithValue(getError);
     }
   }
 );
 
-export const performSignOutFromFirebase = createAsyncThunk(
-  "authenticate/signOut",
-  async (_, { rejectWithValue }) => {
-    try {
-      const auth = await useFirebaseAuthGetUseCase();
-      const user = await useSignOutPerformUseCase({ firebaseAuth: auth });
-      return user;
-    } catch (error: any) {
-      rejectWithValue(error.message);
-    }
+export const performSignOutFromFirebase = createAsyncThunk<
+  void,
+  null,
+  {
+    rejectValue: { errorType: string; errorMessage: string };
   }
-);
+>("authenticate/signOut", async (_, { rejectWithValue }) => {
+  try {
+    const auth = await useFirebaseAuthGetUseCase();
+    const user = await useSignOutPerformUseCase({ firebaseAuth: auth });
+    return user;
+  } catch (error: any) {
+    rejectWithValue(error.message);
+  }
+});
 
 const Authenticate = createSlice({
   name: "authenticate",
@@ -120,7 +127,7 @@ const Authenticate = createSlice({
 
     builder.addCase(performSignInToFirebase.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.payload!;
       state.currentUserdata = null;
       state.isUserSignedIn = false;
     });
@@ -139,7 +146,7 @@ const Authenticate = createSlice({
 
     builder.addCase(performSignOutFromFirebase.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.payload!;
     });
 
     builder.addCase(performSignOutFromFirebase.fulfilled, (state) => {

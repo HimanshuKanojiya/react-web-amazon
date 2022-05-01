@@ -1,6 +1,9 @@
 interface IAuthenticateState {
   loading: boolean;
-  error: null | any;
+  error: null | {
+    errorType: string;
+    errorMessage: string;
+  };
   currentUserdata: null | User;
   isUserSignedIn: boolean;
   userEmail: string;
