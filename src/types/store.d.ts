@@ -1,10 +1,14 @@
 interface IAuthenticateState {
   loading: boolean;
-  error: null;
-  data: string | null;
+  error: null | {
+    errorType: string;
+    errorMessage: string;
+  };
+  currentUserdata: null | User;
+  isUserSignedIn: boolean;
   userEmail: string;
   userPassword: string;
-  isUserSignedIn: boolean;
+  isLoginInputValid: boolean;
   inputUIValidation: {
     isUserEmailValid: boolean;
     isPasswordValid: boolean;

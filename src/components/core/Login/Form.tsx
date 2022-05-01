@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormContainer } from "components/styles/Login/FormContainer";
 import { Link } from "react-router-dom";
 import { amazonIcons } from "../../../assets/icons/index";
 import { DefaultActionBasedButton } from "../Button/DefaultActionBasedButton";
 import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
 import {
-  addUserEmail,
-  addUserPassword,
+  addLoginInfo,
+  validateUserInputs,
+  verifyLoginInputs,
 } from "store/slices/authenticate/Authenticate";
+import { performSignInToFirebase } from "store/slices/authenticate/Authenticate";
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
 export const Form: React.FC = () => {
   const [isPasswordSectionEnable, updatePasswordSection] =
@@ -15,9 +18,13 @@ export const Form: React.FC = () => {
   const [isNeedHelpExtended, updateNeedHelpExtend] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
-  const { userEmail, userPassword, inputUIValidation } = useAppSelector(
-    (state) => state.authenticate
-  );
+  const {
+    userEmail,
+    userPassword,
+    inputUIValidation,
+    isLoginInputValid,
+    error,
+  } = useAppSelector((state) => state.authenticate);
 
   const { ExtendOption, LessOption } = amazonIcons;
 
@@ -28,9 +35,41 @@ export const Form: React.FC = () => {
     updatePasswordSection((prevState) => !prevState);
   };
 
+  const dispatchActionReducerCallback = ({
+    inputName,
+    inputValue,
+    reducerCallBack,
+  }: {
+    inputName: string;
+    inputValue: string | number | boolean;
+    reducerCallBack: ActionCreatorWithPayload<any, string>;
+  }) => {
+    dispatch(reducerCallBack({ inputName, inputValue }));
+  };
+
   const formSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!isLoginInputValid) return;
+
+    dispatch(
+      performSignInToFirebase({
+        userEmail,
+        userPassword,
+      })
+    );
   };
+
+  useEffect(() => {
+    dispatch(
+      verifyLoginInputs({
+        userEmail,
+        userPassword,
+      })
+    );
+    if (!error) return;
+    console.log(error);
+  }, [userEmail, userPassword, dispatch, error]);
 
   return (
     <FormContainer>
@@ -46,14 +85,27 @@ export const Form: React.FC = () => {
               name="user-email"
               id="user-email"
               className="user-email"
+              pattern="^[a-zA-Z0-9]+[a-zA-Z0-9-+_.]+@[a-zA-Z0-9+-]+\.([a-zA-Z0-9.])+"
               value={userEmail}
               onChange={(e) => {
-                dispatch(addUserEmail(e.currentTarget.value));
+                dispatchActionReducerCallback({
+                  inputName: "addUserEmail",
+                  inputValue: e.target.value,
+                  reducerCallBack: addLoginInfo,
+                });
+
+                dispatchActionReducerCallback({
+                  inputName: "isLoginEmailValid",
+                  inputValue: e.target.validity.valid,
+                  reducerCallBack: validateUserInputs,
+                });
               }}
               required
             />
             <DefaultActionBasedButton
               ctaText="Continue"
+              type="button"
+              isDisabled={!inputUIValidation.isUserEmailValid}
               ctaAction={enablePasswordSection}
             />
             <p className="terms-and-condition-disclaimer">
@@ -87,7 +139,9 @@ export const Form: React.FC = () => {
           <>
             <div className="preview-user-email">
               <p>{userEmail}</p>
-              <button onClick={enablePasswordSection}>Change</button>
+              <button type="button" onClick={enablePasswordSection}>
+                Change
+              </button>
             </div>
 
             <div className="user-password-section">
@@ -101,16 +155,30 @@ export const Form: React.FC = () => {
                 id="user-password"
                 className="user-password"
                 autoComplete="off"
+                min={6}
+                max={24}
                 value={userPassword}
-                onChange={(e) =>
-                  dispatch(addUserPassword(e.currentTarget.value))
-                }
+                onChange={(e) => {
+                  dispatchActionReducerCallback({
+                    inputName: "addUserPassword",
+                    inputValue: e.target.value,
+                    reducerCallBack: addLoginInfo,
+                  });
+
+                  dispatchActionReducerCallback({
+                    inputName: "isLoginPasswordValid",
+                    inputValue: e.target.validity.valid,
+                    reducerCallBack: validateUserInputs,
+                  });
+                }}
+                required
               />
             </div>
 
             <DefaultActionBasedButton
+              type="submit"
               ctaText="Sign In"
-              ctaAction={enablePasswordSection}
+              isDisabled={false}
             />
 
             <div className="keep-me-sign-section">

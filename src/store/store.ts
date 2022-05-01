@@ -7,6 +7,17 @@ export const amazonStore = configureStore({
     authenticate: Authenticate,
     signUp: SignUp,
   },
+  middleware(getDefaultMiddleware) {
+    return getDefaultMiddleware({
+      serializableCheck: {
+        ignoredPaths: [
+          "authenticate.currentUserData",
+          "authenticate.currentUserdata.currentUserData",
+        ],
+        ignoredActionPaths: ["payload.currentUserData"],
+      },
+    });
+  },
 });
 
 export type RootState = ReturnType<typeof amazonStore.getState>;

@@ -3,9 +3,13 @@ import { ActionBasedButtonStyle } from "components/styles/Button/ActionBasedButt
 
 export const DefaultActionBasedButton: React.FC<
   DefaultActionBasedButtonProps
-> = ({ ctaText, ctaAction }) => {
+> = ({ ctaText, ctaAction, type, isDisabled }) => {
   return (
-    <ActionBasedButtonStyle onClick={ctaAction}>
+    <ActionBasedButtonStyle
+      disabled={isDisabled}
+      type={type}
+      onClick={ctaAction}
+    >
       {ctaText}
     </ActionBasedButtonStyle>
   );

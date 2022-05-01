@@ -160,6 +160,8 @@ export const SignUpForm: React.FC = () => {
           </p>
           <DefaultActionBasedButton
             ctaText="Continue"
+            type="submit"
+            isDisabled={false}
             ctaAction={() => console.log("SUBMITTED!")}
           />
         </div>

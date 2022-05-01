@@ -11,19 +11,19 @@ const routes: Routes = [
     namePattern: "homePage",
     path: "/",
     pageComponent: homePage,
-    isProtectedPage: true,
+    isProtectedPage: false,
   },
   {
     namePattern: "loginPage",
     path: "login",
     pageComponent: loginPage,
-    isProtectedPage: false,
+    isProtectedPage: true,
   },
   {
     namePattern: "signUpPage",
     path: "sign-up",
     pageComponent: signUpPage,
-    isProtectedPage: false,
+    isProtectedPage: true,
   },
 ];
 
