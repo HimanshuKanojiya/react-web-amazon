@@ -14,7 +14,9 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!authenticate.isUserSignedIn) return;
+    if (!authenticate.isUserSignedIn) {
+      return;
+    }
 
     auth.then((e) => {
       e.onAuthStateChanged((currentUser) => {
