@@ -14,7 +14,9 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!authenticate.isUserSignedIn) return;
+    if (!authenticate.isUserSignedIn) {
+      return;
+    }
 
     auth.then((e) => {
       e.onAuthStateChanged((currentUser) => {
@@ -27,7 +29,6 @@ function App() {
   }, [authenticate, auth, dispatch]);
 
   return (
-<<<<<<< HEAD
     <Defaultlayout>
       <Router>
         <Routes>
@@ -59,24 +60,6 @@ function App() {
         </Routes>
       </Router>
     </Defaultlayout>
-=======
-    <Provider store={amazonStore}>
-      <div className="App">
-        <header className="App-header">
-          <img src={faker.image.abstract()} className="App-logo" alt="logo" />
-          <p>{faker.name.firstName(0)}</p>
-          <a
-            className="App-link"
-            href={faker.internet.url()}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            This is staging branch, so development will be saved here first
-          </a>
-        </header>
-      </div>
-    </Provider>
->>>>>>> d66a539a1d1fb61ada5fc550142e5407df34190c
   );
 }
 
