@@ -72,5 +72,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#ENVIRONMENT FILES
+#ENVIRONMENT FILES CHANGES
 .env
