@@ -19,6 +19,13 @@ interface IPerformSignOut {
   FirebaseAuth: Auth;
 }
 
+interface ICreateUserAccount {
+  userName: string;
+  userEmail: string;
+  userMobileNumber: string;
+  userPassword: string;
+}
+
 interface IUseBrowserStorage {
   getLocalStorageItem: (key: string) => string | any;
   setLocalStorageItem: (key: string, item: any) => void;

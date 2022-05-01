@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
-import { doLogin } from "store/slices/authenticate/Authenticate";
 import { useFirebaseAuthGetUseCase } from "service/useCases/authenticateUseCases/useFirebaseAuthGetUseCase";
 
 const PageAuthWrapper: React.FC = ({ children }) => {
@@ -11,10 +10,11 @@ const PageAuthWrapper: React.FC = ({ children }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    if (isUserSignedIn) return;
+
     auth.then((e) => {
       e.onAuthStateChanged((currentUser) => {
         if (currentUser) {
-          dispatch(doLogin());
           history("/");
           return;
         }

@@ -49,6 +49,13 @@ export const useFirebaseCore = () => {
     return signInWithEmailAndPassword(firebaseAuth, userEmail, userPassword);
   };
 
+  const createUserAccount = async ({
+    userName,
+    userMobileNumber,
+    userEmail,
+    userPassword,
+  }: ICreateUserAccount) => {};
+
   const performSignOut = async ({ FirebaseAuth }: IPerformSignOut) => {
     return await signOut(FirebaseAuth);
   };
@@ -59,5 +66,6 @@ export const useFirebaseCore = () => {
     getFirebaseAuthApp,
     performSignInUsingEmailPassword,
     performSignOut,
+    createUserAccount,
   };
 };
