@@ -29,9 +29,26 @@ export const useFirebaseProvider = () => {
     return await fireBaseCore.performSignOut({ FirebaseAuth: firebaseAuth });
   };
 
+  const performAccountCreation = async ({
+    userName,
+    userMobileNumber,
+    userEmail,
+    userPassword,
+    firebaseAuth,
+  }: IperformAccountCreation): Promise<UserCredential> => {
+    return await fireBaseCore.createUserAccount({
+      userName,
+      userMobileNumber,
+      userEmail,
+      userPassword,
+      firebaseAuth,
+    });
+  };
+
   return {
     getFirebaseAuthApp,
     performSignIn,
     performSignOut,
+    performAccountCreation,
   };
 };

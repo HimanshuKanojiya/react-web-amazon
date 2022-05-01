@@ -4,6 +4,7 @@ import {
   getAuth,
   setPersistence,
   browserSessionPersistence,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
@@ -54,7 +55,14 @@ export const useFirebaseCore = () => {
     userMobileNumber,
     userEmail,
     userPassword,
-  }: ICreateUserAccount) => {};
+    firebaseAuth,
+  }: ICreateUserAccount) => {
+    return await createUserWithEmailAndPassword(
+      firebaseAuth,
+      userEmail,
+      userPassword
+    );
+  };
 
   const performSignOut = async ({ FirebaseAuth }: IPerformSignOut) => {
     return await signOut(FirebaseAuth);

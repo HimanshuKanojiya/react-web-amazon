@@ -8,6 +8,15 @@ interface IperformSignIn {
   firebaseAuth?: Auth;
 }
 
+interface IperformAccountCreation {
+  userName: string;
+  userPassword: string;
+  userEmail: string;
+  userPassword: string;
+  userMobileNumber: string;
+  firebaseAuth?: Auth;
+}
+
 interface IperformSignOut {
   firebaseAuth: Auth;
 }

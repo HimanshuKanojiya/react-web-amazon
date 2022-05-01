@@ -24,6 +24,7 @@ interface ICreateUserAccount {
   userEmail: string;
   userMobileNumber: string;
   userPassword: string;
+  firebaseAuth: Auth;
 }
 
 interface IUseBrowserStorage {
