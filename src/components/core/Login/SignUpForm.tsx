@@ -12,6 +12,7 @@ import {
 } from "store/slices/signup/SignUp";
 import { useNavigate } from "react-router-dom";
 import countriesData from "../../../assets/countries.json";
+import { useEffect } from "react";
 
 export const SignUpForm: React.FC = () => {
   const { ExtendOption, InfoIcon, AttentionIcon } = amazonIcons;
@@ -29,6 +30,14 @@ export const SignUpForm: React.FC = () => {
     inputUIValidation,
   } = useAppSelector((state) => state.signUp);
 
+  useEffect(() => {
+    console.log("User Name---->", userName);
+    console.log("User Password---->", userPassword);
+    console.log("User Country---->", userCountryCode);
+    console.log("User Phone---->", userPhone);
+    console.log("User Email---->", userEmail);
+  }, [userName, userPassword, userCountryCode, userPhone, userEmail]);
+
   const formSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
@@ -45,6 +54,7 @@ export const SignUpForm: React.FC = () => {
           name="user-name"
           id="user-name"
           className="user-name"
+          pattern="[a-zA-Z]+"
           autoComplete="off"
           value={userName}
           onChange={(e) => {
@@ -90,6 +100,7 @@ export const SignUpForm: React.FC = () => {
               className="user-phone"
               value={userPhone}
               placeholder="Mobile number"
+              pattern="[0-9]{10,10}"
               min={10}
               max={10}
               autoComplete="off"
@@ -114,6 +125,7 @@ export const SignUpForm: React.FC = () => {
           name="user-email"
           id="user-email"
           className="user-email"
+          pattern="^[a-zA-Z0-9]+[a-zA-Z0-9-+_.]+@[a-zA-Z0-9+-]+\.([a-zA-Z0-9.])+"
           value={userEmail}
           autoComplete="off"
           onChange={(e) => {
@@ -136,6 +148,7 @@ export const SignUpForm: React.FC = () => {
           id="user-password"
           className="user-password"
           placeholder="At least 6 characters"
+          min={6}
           autoComplete="off"
           value={userPassword}
           onChange={(e) => {
