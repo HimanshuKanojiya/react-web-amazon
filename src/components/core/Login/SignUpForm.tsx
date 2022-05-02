@@ -3,7 +3,11 @@ import { SignUpFormContainer } from "components/styles/Login/SignUpFormContainer
 import { DefaultActionBasedButton } from "../Button/DefaultActionBasedButton";
 import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
 import { amazonIcons } from "assets/icons";
-import { addBasicInfo, validateUIInputs } from "store/slices/signup/SignUp";
+import {
+  addBasicInfo,
+  validateUIInputs,
+  verifyFormInputs,
+} from "store/slices/signup/SignUp";
 import { useNavigate } from "react-router-dom";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import countriesData from "../../../assets/countries.json";
@@ -37,13 +41,22 @@ export const SignUpForm: React.FC = () => {
     dispatch(reducerCallBack({ inputName, inputValue }));
   };
 
-  useEffect(() => {
-    console.log(inputUIValidation);
-  }, [inputUIValidation]);
-
   const formSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!inputUIValidation.isFormOkayToSubmit) return;
   };
+
+  useEffect(() => {
+    dispatch(
+      verifyFormInputs({
+        userName,
+        userEmail,
+        userCountryCode,
+        userPhone,
+        userPassword,
+      })
+    );
+  }, [userName, userEmail, userCountryCode, userPhone, userPassword, dispatch]);
 
   return (
     <SignUpFormContainer>
@@ -57,7 +70,7 @@ export const SignUpForm: React.FC = () => {
           name="user-name"
           id="user-name"
           className="user-name"
-          pattern="[a-zA-Z]+"
+          pattern="[a-zA-Z ]+"
           autoComplete="off"
           value={userName}
           onChange={(e) => {
@@ -121,6 +134,7 @@ export const SignUpForm: React.FC = () => {
               pattern="[0-9]{10,10}"
               min={10}
               max={10}
+              maxLength={10}
               autoComplete="off"
               onChange={(e) => {
                 dispatchActionReducerCallback({
@@ -183,12 +197,13 @@ export const SignUpForm: React.FC = () => {
           <strong>Password</strong>
         </label>
         <input
-          type="password"
+          type="text"
           name="user-password"
           id="user-password"
           className="user-password"
           placeholder="At least 6 characters"
           min={6}
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,50}$"
           autoComplete="off"
           value={userPassword}
           onChange={(e) => {
@@ -214,7 +229,8 @@ export const SignUpForm: React.FC = () => {
         )}
 
         <p className="user-password-info">
-          <InfoIcon /> Passwords must be at least 6 characters.
+          <InfoIcon /> Passwords must be at least 6 characters and must be
+          alphanumeric including uppercase & one special character.
         </p>
 
         <div className="create-account-cta">
