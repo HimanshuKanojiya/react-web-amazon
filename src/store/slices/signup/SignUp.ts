@@ -20,30 +20,49 @@ export const SignUp = createSlice({
     },
   } as ISignUp,
   reducers: {
-    addFullName: (state, action) => {
-      state.userName = action.payload;
+    addBasicInfo: (state, action) => {
+      const { inputName, inputValue } = action.payload;
+      switch (inputName) {
+        case "addUserFullName":
+          state.userName = inputValue;
+          break;
+
+        case "addUserPassword":
+          state.userPassword = inputValue;
+          break;
+
+        case "addUserEmail":
+          state.userEmail = inputValue;
+          break;
+
+        case "addUserPhone":
+          state.userPhone = inputValue;
+          break;
+
+        case "addUserCountryCode":
+          state.userCountryCode = inputValue;
+          break;
+      }
     },
-    addUserPassword: (state, action) => {
-      state.userPassword = action.payload;
-    },
-    addUserEmail: (state, action) => {
-      state.userEmail = action.payload;
-    },
-    addUserPhone: (state, action) => {
-      state.userPhone = action.payload;
-    },
-    addUserCountryCode: (state, action) => {
-      state.userCountryCode = action.payload;
+    validateUIInputs: (state, action) => {
+      const { inputName, inputValue } = action.payload;
+      switch (inputName) {
+        case "isUserNameValid":
+          state.inputUIValidation.isUserNameValid = inputValue;
+          break;
+        case "isUserEmailValid":
+          state.inputUIValidation.isUserEmailValid = inputValue;
+          break;
+        case "isUserPhoneValid":
+          state.inputUIValidation.isUserPhoneValid = inputValue;
+          break;
+        case "isUserPasswordValid":
+          state.inputUIValidation.isUserPasswordValid = inputValue;
+      }
     },
   },
 });
 
-export const {
-  addFullName,
-  addUserEmail,
-  addUserPassword,
-  addUserPhone,
-  addUserCountryCode,
-} = SignUp.actions;
+export const { addBasicInfo, validateUIInputs } = SignUp.actions;
 
 export default SignUp.reducer;

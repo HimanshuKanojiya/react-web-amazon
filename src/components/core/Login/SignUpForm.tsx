@@ -3,14 +3,9 @@ import { SignUpFormContainer } from "components/styles/Login/SignUpFormContainer
 import { DefaultActionBasedButton } from "../Button/DefaultActionBasedButton";
 import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
 import { amazonIcons } from "assets/icons";
-import {
-  addFullName,
-  addUserEmail,
-  addUserPhone,
-  addUserPassword,
-  addUserCountryCode,
-} from "store/slices/signup/SignUp";
+import { addBasicInfo, validateUIInputs } from "store/slices/signup/SignUp";
 import { useNavigate } from "react-router-dom";
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import countriesData from "../../../assets/countries.json";
 import { useEffect } from "react";
 
@@ -30,13 +25,21 @@ export const SignUpForm: React.FC = () => {
     inputUIValidation,
   } = useAppSelector((state) => state.signUp);
 
+  const dispatchActionReducerCallback = ({
+    inputName,
+    inputValue,
+    reducerCallBack,
+  }: {
+    inputName: string;
+    inputValue: string | number | boolean;
+    reducerCallBack: ActionCreatorWithPayload<any, string>;
+  }) => {
+    dispatch(reducerCallBack({ inputName, inputValue }));
+  };
+
   useEffect(() => {
-    console.log("User Name---->", userName);
-    console.log("User Password---->", userPassword);
-    console.log("User Country---->", userCountryCode);
-    console.log("User Phone---->", userPhone);
-    console.log("User Email---->", userEmail);
-  }, [userName, userPassword, userCountryCode, userPhone, userEmail]);
+    console.log(inputUIValidation);
+  }, [inputUIValidation]);
 
   const formSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -58,7 +61,18 @@ export const SignUpForm: React.FC = () => {
           autoComplete="off"
           value={userName}
           onChange={(e) => {
-            dispatch(addFullName(e.currentTarget.value));
+            dispatchActionReducerCallback({
+              inputName: "addUserFullName",
+              inputValue: e.target.value,
+              reducerCallBack: addBasicInfo,
+            });
+          }}
+          onBlur={(e) => {
+            dispatchActionReducerCallback({
+              inputName: "isUserNameValid",
+              inputValue: !e.target.validity.valid,
+              reducerCallBack: validateUIInputs,
+            });
           }}
           required
         />
@@ -80,7 +94,11 @@ export const SignUpForm: React.FC = () => {
             autoComplete="off"
             value={userCountryCode}
             onChange={(e) => {
-              dispatch(addUserCountryCode(e.currentTarget.value));
+              dispatchActionReducerCallback({
+                inputName: "addUserCountryCode",
+                inputValue: e.target.value,
+                reducerCallBack: addBasicInfo,
+              });
             }}
           >
             {countriesData.map((country) => {
@@ -105,7 +123,18 @@ export const SignUpForm: React.FC = () => {
               max={10}
               autoComplete="off"
               onChange={(e) => {
-                dispatch(addUserPhone(e.currentTarget.value));
+                dispatchActionReducerCallback({
+                  inputName: "addUserPhone",
+                  inputValue: e.target.value,
+                  reducerCallBack: addBasicInfo,
+                });
+              }}
+              onBlur={(e) => {
+                dispatchActionReducerCallback({
+                  inputName: "isUserPhoneValid",
+                  inputValue: !e.target.validity.valid,
+                  reducerCallBack: validateUIInputs,
+                });
               }}
               required
             />
@@ -129,7 +158,18 @@ export const SignUpForm: React.FC = () => {
           value={userEmail}
           autoComplete="off"
           onChange={(e) => {
-            dispatch(addUserEmail(e.currentTarget.value));
+            dispatchActionReducerCallback({
+              inputName: "addUserEmail",
+              inputValue: e.target.value,
+              reducerCallBack: addBasicInfo,
+            });
+          }}
+          onBlur={(e) => {
+            dispatchActionReducerCallback({
+              inputName: "isUserEmailValid",
+              inputValue: !e.target.validity.valid,
+              reducerCallBack: validateUIInputs,
+            });
           }}
           required
         />
@@ -152,7 +192,18 @@ export const SignUpForm: React.FC = () => {
           autoComplete="off"
           value={userPassword}
           onChange={(e) => {
-            dispatch(addUserPassword(e.currentTarget.value));
+            dispatchActionReducerCallback({
+              inputName: "addUserPassword",
+              inputValue: e.target.value,
+              reducerCallBack: addBasicInfo,
+            });
+          }}
+          onBlur={(e) => {
+            dispatchActionReducerCallback({
+              inputName: "isUserPasswordValid",
+              inputValue: !e.target.validity.valid,
+              reducerCallBack: validateUIInputs,
+            });
           }}
           required
         />
