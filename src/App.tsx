@@ -57,6 +57,10 @@ function App() {
               />
             );
           })}
+          <Route
+            path="*"
+            element={<p>Must be lost...anyways this project is in WIP...</p>}
+          />
         </Routes>
       </Router>
     </Defaultlayout>

@@ -4,14 +4,15 @@ import { DefaultActionBasedButton } from "../Button/DefaultActionBasedButton";
 import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
 import { amazonIcons } from "assets/icons";
 import {
-  addFullName,
-  addUserEmail,
-  addUserPhone,
-  addUserPassword,
-  addUserCountryCode,
+  addBasicInfo,
+  validateUIInputs,
+  verifyFormInputs,
+  performAccountCreation,
 } from "store/slices/signup/SignUp";
 import { useNavigate } from "react-router-dom";
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import countriesData from "../../../assets/countries.json";
+import { useEffect } from "react";
 
 export const SignUpForm: React.FC = () => {
   const { ExtendOption, InfoIcon, AttentionIcon } = amazonIcons;
@@ -24,14 +25,55 @@ export const SignUpForm: React.FC = () => {
     userName,
     userPassword,
     userCountryCode,
-    userPhone,
+    userMobileNumber,
     userEmail,
     inputUIValidation,
   } = useAppSelector((state) => state.signUp);
 
+  const dispatchActionReducerCallback = ({
+    inputName,
+    inputValue,
+    reducerCallBack,
+  }: {
+    inputName: string;
+    inputValue: string | number | boolean;
+    reducerCallBack: ActionCreatorWithPayload<any, string>;
+  }) => {
+    dispatch(reducerCallBack({ inputName, inputValue }));
+  };
+
   const formSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!inputUIValidation.isFormOkayToSubmit) return;
+
+    dispatch(
+      performAccountCreation({
+        userName,
+        userMobileNumber,
+        userPassword,
+        userEmail,
+      })
+    );
   };
+
+  useEffect(() => {
+    dispatch(
+      verifyFormInputs({
+        userName,
+        userEmail,
+        userCountryCode,
+        userMobileNumber,
+        userPassword,
+      })
+    );
+  }, [
+    userName,
+    userEmail,
+    userCountryCode,
+    userMobileNumber,
+    userPassword,
+    dispatch,
+  ]);
 
   return (
     <SignUpFormContainer>
@@ -45,10 +87,22 @@ export const SignUpForm: React.FC = () => {
           name="user-name"
           id="user-name"
           className="user-name"
+          pattern="[a-zA-Z ]+"
           autoComplete="off"
           value={userName}
           onChange={(e) => {
-            dispatch(addFullName(e.currentTarget.value));
+            dispatchActionReducerCallback({
+              inputName: "addUserFullName",
+              inputValue: e.target.value,
+              reducerCallBack: addBasicInfo,
+            });
+          }}
+          onBlur={(e) => {
+            dispatchActionReducerCallback({
+              inputName: "isUserNameValid",
+              inputValue: !e.target.validity.valid,
+              reducerCallBack: validateUIInputs,
+            });
           }}
           required
         />
@@ -70,7 +124,11 @@ export const SignUpForm: React.FC = () => {
             autoComplete="off"
             value={userCountryCode}
             onChange={(e) => {
-              dispatch(addUserCountryCode(e.currentTarget.value));
+              dispatchActionReducerCallback({
+                inputName: "addUserCountryCode",
+                inputValue: e.target.value,
+                reducerCallBack: addBasicInfo,
+              });
             }}
           >
             {countriesData.map((country) => {
@@ -88,17 +146,30 @@ export const SignUpForm: React.FC = () => {
               name="user-phone"
               id="user-phone"
               className="user-phone"
-              value={userPhone}
+              value={userMobileNumber}
               placeholder="Mobile number"
+              pattern="[0-9]{10,10}"
               min={10}
               max={10}
+              maxLength={10}
               autoComplete="off"
               onChange={(e) => {
-                dispatch(addUserPhone(e.currentTarget.value));
+                dispatchActionReducerCallback({
+                  inputName: "addUserMobileNumber",
+                  inputValue: e.target.value,
+                  reducerCallBack: addBasicInfo,
+                });
+              }}
+              onBlur={(e) => {
+                dispatchActionReducerCallback({
+                  inputName: "isUserMobileValid",
+                  inputValue: !e.target.validity.valid,
+                  reducerCallBack: validateUIInputs,
+                });
               }}
               required
             />
-            {inputUIValidation.isUserPhoneValid && (
+            {inputUIValidation.isUserMobileValid && (
               <p className="user-info-error">
                 <AttentionIcon /> Enter your mobile number.
               </p>
@@ -114,10 +185,22 @@ export const SignUpForm: React.FC = () => {
           name="user-email"
           id="user-email"
           className="user-email"
+          pattern="^[a-zA-Z0-9]+[a-zA-Z0-9-+_.]+@[a-zA-Z0-9+-]+\.([a-zA-Z0-9.])+"
           value={userEmail}
           autoComplete="off"
           onChange={(e) => {
-            dispatch(addUserEmail(e.currentTarget.value));
+            dispatchActionReducerCallback({
+              inputName: "addUserEmail",
+              inputValue: e.target.value,
+              reducerCallBack: addBasicInfo,
+            });
+          }}
+          onBlur={(e) => {
+            dispatchActionReducerCallback({
+              inputName: "isUserEmailValid",
+              inputValue: !e.target.validity.valid,
+              reducerCallBack: validateUIInputs,
+            });
           }}
           required
         />
@@ -136,10 +219,23 @@ export const SignUpForm: React.FC = () => {
           id="user-password"
           className="user-password"
           placeholder="At least 6 characters"
+          min={6}
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,50}$"
           autoComplete="off"
           value={userPassword}
           onChange={(e) => {
-            dispatch(addUserPassword(e.currentTarget.value));
+            dispatchActionReducerCallback({
+              inputName: "addUserPassword",
+              inputValue: e.target.value,
+              reducerCallBack: addBasicInfo,
+            });
+          }}
+          onBlur={(e) => {
+            dispatchActionReducerCallback({
+              inputName: "isUserPasswordValid",
+              inputValue: !e.target.validity.valid,
+              reducerCallBack: validateUIInputs,
+            });
           }}
           required
         />
@@ -150,7 +246,8 @@ export const SignUpForm: React.FC = () => {
         )}
 
         <p className="user-password-info">
-          <InfoIcon /> Passwords must be at least 6 characters.
+          <InfoIcon /> Passwords must be at least 6 characters and must be
+          alphanumeric including uppercase & one special character.
         </p>
 
         <div className="create-account-cta">
@@ -162,7 +259,7 @@ export const SignUpForm: React.FC = () => {
             ctaText="Continue"
             type="submit"
             isDisabled={false}
-            ctaAction={() => console.log("SUBMITTED!")}
+            ctaAction={() => {}}
           />
         </div>
 

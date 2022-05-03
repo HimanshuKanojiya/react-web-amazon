@@ -135,7 +135,7 @@ const Authenticate = createSlice({
     builder.addCase(performSignInToFirebase.fulfilled, (state, action) => {
       state.loading = false;
       state.error = null;
-      state.currentUserdata = action.payload;
+      state.currentUserdata = action.payload.currentUserData;
       state.isUserSignedIn = action.payload ? true : false;
     });
 

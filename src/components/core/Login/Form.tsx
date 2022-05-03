@@ -67,8 +67,6 @@ export const Form: React.FC = () => {
         userPassword,
       })
     );
-    if (!error) return;
-    console.log(error);
   }, [userEmail, userPassword, dispatch, error]);
 
   return (

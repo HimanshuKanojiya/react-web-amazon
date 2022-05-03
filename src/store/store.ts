@@ -13,6 +13,8 @@ export const amazonStore = configureStore({
         ignoredPaths: [
           "authenticate.currentUserData",
           "authenticate.currentUserdata.currentUserData",
+          "signUp.currentUserData",
+          "signUp.currentUserdata.currentUserData",
         ],
         ignoredActionPaths: ["payload.currentUserData"],
       },
