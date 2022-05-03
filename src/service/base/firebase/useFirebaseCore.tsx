@@ -57,6 +57,7 @@ export const useFirebaseCore = () => {
     userPassword,
     firebaseAuth,
   }: ICreateUserAccount) => {
+    await setPersistence(firebaseAuth, browserSessionPersistence);
     return await createUserWithEmailAndPassword(
       firebaseAuth,
       userEmail,

@@ -19,6 +19,14 @@ export const useGetLoginErrorUseCase = () => {
         errorMessage: "Too many failed login attempts, please try again later",
       };
     }
+
+    if (firebaseErrorName.includes("email-already-in-use")) {
+      return {
+        errorType: "FIREBASE_DETECTED_EMAIL_IN_USE_ALREADY",
+        errorMessage: "This email is already registered with us",
+      };
+    }
+
     //In case no name found
     return {
       errorType: firebaseErrorName,

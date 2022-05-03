@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
 import { useFirebaseAuthGetUseCase } from "service/useCases/authenticateUseCases/useFirebaseAuthGetUseCase";
 
 const PageAuthWrapper: React.FC = ({ children }) => {
   const history = useNavigate();
+  const location = useLocation();
   const auth = useFirebaseAuthGetUseCase();
   const { isUserSignedIn } = useAppSelector((state) => state.authenticate);
   const dispatch = useAppDispatch();
@@ -14,13 +15,19 @@ const PageAuthWrapper: React.FC = ({ children }) => {
 
     auth.then((e) => {
       e.onAuthStateChanged((currentUser) => {
-        if (currentUser) {
+        if (
+          currentUser &&
+          (location.pathname.includes("login") ||
+            location.pathname.includes("sign-up"))
+        ) {
           history("/");
           return;
+        } else if (currentUser) {
+          window.history.back();
         }
       });
     });
-  }, [isUserSignedIn, auth, dispatch, history]);
+  }, [isUserSignedIn, auth, dispatch, history, location.pathname]);
 
   return <>{children}</>;
 };
