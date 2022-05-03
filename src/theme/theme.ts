@@ -20,6 +20,7 @@ declare module "styled-components" {
       };
       secondary: {
         darkBlack: string;
+        darkBlack2: string;
         mediun: string;
         blue: string;
         red: string;
@@ -28,6 +29,7 @@ declare module "styled-components" {
         orange: string;
         hoverOrange: string;
         grey: string;
+        grey2: string;
         darkGrey: string;
         disabledGrey: string;
       };
@@ -86,6 +88,7 @@ export const theme: DefaultTheme = {
     },
     secondary: {
       darkBlack: "#141920",
+      darkBlack2: "#131921",
       mediun: "#252F3D",
       blue: "#0066c0",
       red: "#B12704",
@@ -94,6 +97,7 @@ export const theme: DefaultTheme = {
       orange: "#C45500",
       hoverOrange: "#B65B22",
       grey: "#DDDDDD",
+      grey2: "#CCCCCC",
       darkGrey: "#C9CCCC",
       disabledGrey: "#565959",
     },
