@@ -1,9 +1,11 @@
+type firebaseAuthenticationError = {
+  errorType: string;
+  errorMessage: string;
+};
+
 interface IAuthenticateState {
   loading: boolean;
-  error: null | {
-    errorType: string;
-    errorMessage: string;
-  };
+  error: null | firebaseAuthenticationError;
   currentUserdata: null | User;
   isUserSignedIn: boolean;
   userEmail: string;
@@ -17,17 +19,17 @@ interface IAuthenticateState {
 
 interface ISignUp {
   loading: boolean;
-  error: null;
-  data: string | null;
+  error: null | firebaseAuthenticationError;
+  currentUserData: null | User;
   userName: string;
   userCountryCode: string;
-  userPhone: string;
-  userEmail?: string;
+  userMobileNumber: string;
+  userEmail: string;
   userPassword: string;
   inputUIValidation: {
     isFormOkayToSubmit: boolean;
     isUserNameValid: boolean;
-    isUserPhoneValid: boolean;
+    isUserMobileValid: boolean;
     isUserEmailValid: boolean;
     isUserPasswordValid: boolean;
   };

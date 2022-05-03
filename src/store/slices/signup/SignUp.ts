@@ -1,21 +1,58 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { User } from "firebase/auth";
+import { useAccountCreationUseCase } from "service/useCases/authenticateUseCases/useAccountCreationUseCase";
+import { useFirebaseAuthGetUseCase } from "service/useCases/authenticateUseCases/useFirebaseAuthGetUseCase";
+import { useGetLoginErrorUseCase } from "service/useCases/firebaseErrorIndentifier/useGetLoginErrorUseCase";
+
+export const performAccountCreation = createAsyncThunk<
+  { currentUserData: User },
+  IUseAccountCreationUseCase,
+  {
+    rejectValue: {
+      errorType: string;
+      errorMessage: string;
+    };
+  }
+>(
+  "signUp/createAccount",
+  async (
+    { userName, userEmail, userMobileNumber, userPassword },
+    { rejectWithValue }
+  ) => {
+    try {
+      const auth = await useFirebaseAuthGetUseCase();
+      const user = await useAccountCreationUseCase({
+        userName,
+        userEmail,
+        userMobileNumber,
+        userPassword,
+        firebaseAuth: auth,
+      });
+      return { currentUserData: user };
+    } catch (error: any) {
+      const { getErrorName } = useGetLoginErrorUseCase();
+      const getError = getErrorName(error.message);
+      return rejectWithValue(getError);
+    }
+  }
+);
 
 export const SignUp = createSlice({
-  name: "signup",
+  name: "signUp",
   initialState: {
     loading: false,
     error: null,
-    data: null,
+    currentUserData: null,
     userName: "",
     userPassword: "",
     userEmail: "",
     userCountryCode: "",
-    userPhone: "",
+    userMobileNumber: "",
     inputUIValidation: {
       isFormOkayToSubmit: false,
       isUserNameValid: false,
       isUserEmailValid: false,
-      isUserPhoneValid: false,
+      isUserMobileValid: false,
       isUserPasswordValid: false,
     },
   } as ISignUp,
@@ -35,8 +72,8 @@ export const SignUp = createSlice({
           state.userEmail = inputValue;
           break;
 
-        case "addUserPhone":
-          state.userPhone = inputValue;
+        case "addUserMobileNumber":
+          state.userMobileNumber = inputValue;
           break;
 
         case "addUserCountryCode":
@@ -53,8 +90,8 @@ export const SignUp = createSlice({
         case "isUserEmailValid":
           state.inputUIValidation.isUserEmailValid = inputValue;
           break;
-        case "isUserPhoneValid":
-          state.inputUIValidation.isUserPhoneValid = inputValue;
+        case "isUserMobileValid":
+          state.inputUIValidation.isUserMobileValid = inputValue;
           break;
         case "isUserPasswordValid":
           state.inputUIValidation.isUserPasswordValid = inputValue;
@@ -83,9 +120,9 @@ export const SignUp = createSlice({
 
       if (action.payload.userEmail.split("@").length > 2) return;
 
-      if (!action.payload.userPhone) return;
+      if (!action.payload.userMobileNumber) return;
 
-      if (action.payload.userPhone.length !== 10) return;
+      if (action.payload.userMobileNumber.length !== 10) return;
 
       if (!action.payload.userCountryCode) return;
 
@@ -96,6 +133,25 @@ export const SignUp = createSlice({
 
       state.inputUIValidation.isFormOkayToSubmit = true;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(performAccountCreation.rejected, (state, action) => {
+      state.loading = false;
+      state.currentUserData = null;
+      state.error = action.payload!;
+    });
+
+    builder.addCase(performAccountCreation.pending, (state, action) => {
+      state.loading = true;
+      state.currentUserData = null;
+      state.error = null;
+    });
+
+    builder.addCase(performAccountCreation.fulfilled, (state, action) => {
+      state.loading = false;
+      state.currentUserData = action.payload.currentUserData;
+      state.error = null;
+    });
   },
 });
 

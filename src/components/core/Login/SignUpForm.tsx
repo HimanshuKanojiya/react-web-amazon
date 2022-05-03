@@ -7,6 +7,7 @@ import {
   addBasicInfo,
   validateUIInputs,
   verifyFormInputs,
+  performAccountCreation,
 } from "store/slices/signup/SignUp";
 import { useNavigate } from "react-router-dom";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
@@ -24,7 +25,7 @@ export const SignUpForm: React.FC = () => {
     userName,
     userPassword,
     userCountryCode,
-    userPhone,
+    userMobileNumber,
     userEmail,
     inputUIValidation,
   } = useAppSelector((state) => state.signUp);
@@ -44,6 +45,15 @@ export const SignUpForm: React.FC = () => {
   const formSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!inputUIValidation.isFormOkayToSubmit) return;
+
+    dispatch(
+      performAccountCreation({
+        userName,
+        userMobileNumber,
+        userPassword,
+        userEmail,
+      })
+    );
   };
 
   useEffect(() => {
@@ -52,11 +62,18 @@ export const SignUpForm: React.FC = () => {
         userName,
         userEmail,
         userCountryCode,
-        userPhone,
+        userMobileNumber,
         userPassword,
       })
     );
-  }, [userName, userEmail, userCountryCode, userPhone, userPassword, dispatch]);
+  }, [
+    userName,
+    userEmail,
+    userCountryCode,
+    userMobileNumber,
+    userPassword,
+    dispatch,
+  ]);
 
   return (
     <SignUpFormContainer>
@@ -129,7 +146,7 @@ export const SignUpForm: React.FC = () => {
               name="user-phone"
               id="user-phone"
               className="user-phone"
-              value={userPhone}
+              value={userMobileNumber}
               placeholder="Mobile number"
               pattern="[0-9]{10,10}"
               min={10}
@@ -138,21 +155,21 @@ export const SignUpForm: React.FC = () => {
               autoComplete="off"
               onChange={(e) => {
                 dispatchActionReducerCallback({
-                  inputName: "addUserPhone",
+                  inputName: "addUserMobileNumber",
                   inputValue: e.target.value,
                   reducerCallBack: addBasicInfo,
                 });
               }}
               onBlur={(e) => {
                 dispatchActionReducerCallback({
-                  inputName: "isUserPhoneValid",
+                  inputName: "isUserMobileValid",
                   inputValue: !e.target.validity.valid,
                   reducerCallBack: validateUIInputs,
                 });
               }}
               required
             />
-            {inputUIValidation.isUserPhoneValid && (
+            {inputUIValidation.isUserMobileValid && (
               <p className="user-info-error">
                 <AttentionIcon /> Enter your mobile number.
               </p>
@@ -197,7 +214,7 @@ export const SignUpForm: React.FC = () => {
           <strong>Password</strong>
         </label>
         <input
-          type="text"
+          type="password"
           name="user-password"
           id="user-password"
           className="user-password"
@@ -242,7 +259,7 @@ export const SignUpForm: React.FC = () => {
             ctaText="Continue"
             type="submit"
             isDisabled={false}
-            ctaAction={() => console.log("SUBMITTED!")}
+            ctaAction={() => {}}
           />
         </div>
 
