@@ -1,7 +1,7 @@
 import React from "react";
 import { amazonIcons } from "assets/icons";
 import { HeaderMenuContainer } from "components/styles/Menus/HeaderMenuContainer";
-import { SearchBarContainer } from "components/styles/SearchBar/SearchBarContainer";
+import { SearchBar } from "../SearchBar/SearchBar";
 
 export const HeaderMenu: React.FC = () => {
   const { AmazonWhiteLogoIcon, LocationIcon } = amazonIcons;
@@ -21,7 +21,7 @@ export const HeaderMenu: React.FC = () => {
           <strong>Select your address</strong>
         </div>
       </div>
-      <SearchBarContainer />
+      <SearchBar />
     </HeaderMenuContainer>
   );
 };
