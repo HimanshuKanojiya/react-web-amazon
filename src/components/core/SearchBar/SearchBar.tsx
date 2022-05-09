@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import productCategoryList from "assets/product-category.json";
 import { SearchBarContainer } from "components/styles/SearchBar/SearchBarContainer";
 import { amazonIcons } from "assets/icons";
 
 export const SearchBar: React.FC = () => {
   const { SearchIcon } = amazonIcons;
+  const [searchCategory, updateSearchCategory] =
+    useState<string>("all-categories");
+
+  useEffect(() => {
+    console.log(searchCategory.length);
+  }, [searchCategory]);
+
+  const handleSearchCategoryWidthClass = () => {
+    if (searchCategory.length > 9 && searchCategory.length <= 12)
+      return "search-select-cat-w-extend-a";
+    if (searchCategory.length > 12 && searchCategory.length < 15)
+      return "search-select-cat-w-extend-b";
+    if (searchCategory.length >= 15 && searchCategory.length < 17)
+      return "search-select-cat-w-extend-c";
+    if (searchCategory.length >= 17) return "search-select-cat-w-extend-d";
+  };
+
+  useEffect(() => {
+    console.log(searchCategory.length);
+  }, [searchCategory]);
 
   return (
     <SearchBarContainer>
       <select
-        className="search-select-category"
+        className={`search-select-category ${
+          handleSearchCategoryWidthClass() ?? ""
+        }`}
         name="search-select-category"
-        defaultValue="all-categories"
+        defaultValue={searchCategory}
+        onChange={(e) => updateSearchCategory(e.target.value)}
       >
         {productCategoryList.map((productCategory) => {
           return (
