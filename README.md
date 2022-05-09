@@ -11,10 +11,12 @@ In this project, we have used these technologies:
 - Firebase (for authentication purposes)
 - JIRA & Scrum (for project management)
 
+**Current Sprint:** 4
+
 ### Instrunctions to use this project:
 
 As of now, project is already hosted, and in ongoing development so links to staging/development is hidden by default.
-Production link is live but it does not have updated changes (for now, waiting to finish first 2 sprints tasks)
+Production link is live but it does not have much updated changes (for now, waiting to finish 4 sprints tasks)
 
 In case, if you want to run this project in local, you need to do (for now, as it is in active development):
 
