@@ -17,7 +17,8 @@ interface DefaultErrorProps {
 
 interface DefaultDualTextItemProps {
   withIcon: boolean;
-  icon: IconType | string;
+  icon?: IconType;
+  iconPosition?: "left" | "right";
   actionCTA: () => void;
   normalText: string;
   highlightText: string;
