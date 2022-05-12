@@ -20,7 +20,7 @@ interface DefaultErrorProps {
 interface DefaultDualTextItemProps {
   withIcon: boolean;
   icon: IconType | string;
-  actionCTA: React.MouseEventHandler<HTMLButtonElement>;
+  actionCTA: () => void;
   normalText: string;
   highlightText: string;
 }
