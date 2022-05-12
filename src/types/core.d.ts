@@ -1,5 +1,3 @@
-import { IconType } from "react-icons";
-
 interface DefaultButtonProps {
   ctaText: string;
   ctaLink: string;
