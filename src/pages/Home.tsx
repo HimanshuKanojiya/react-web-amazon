@@ -3,11 +3,7 @@ import React from "react";
 const Home: React.FC = () => {
   return (
     <>
-      <div
-        style={{
-          filter: "brightness(0.4)",
-        }}
-      >
+      <div>
         <h1>WIP - Work in Progress</h1>
         <p>
           This project is in work in progress, please visit after few weeks to
