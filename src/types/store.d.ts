@@ -11,6 +11,7 @@ interface IAuthenticateState {
   userEmail: string;
   userPassword: string;
   isLoginInputValid: boolean;
+  currentLanguage: "EN" | "HI" | "TA" | "TE" | "KN" | "BN" | "ML" | "MR";
   inputUIValidation: {
     isUserEmailValid: boolean;
     isPasswordValid: boolean;

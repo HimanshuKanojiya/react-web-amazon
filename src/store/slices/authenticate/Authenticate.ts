@@ -55,6 +55,7 @@ const Authenticate = createSlice({
     currentUserdata: null,
     isUserSignedIn: false,
     userEmail: "",
+    currentLanguage: "EN",
     userPassword: "",
     isLoginInputValid: false,
     inputUIValidation: {
@@ -63,7 +64,10 @@ const Authenticate = createSlice({
     },
   } as IAuthenticateState,
   reducers: {
-    addLoginInfo: (state, action) => {
+    addLoginInfo: (
+      state: IAuthenticateState,
+      action: { payload: { inputName: any; inputValue: any } }
+    ) => {
       const { inputName, inputValue } = action.payload;
 
       switch (inputName) {
@@ -75,13 +79,18 @@ const Authenticate = createSlice({
           break;
       }
     },
-    doLogin: (state) => {
+    doLogin: (state: IAuthenticateState) => {
       state.isUserSignedIn = true;
     },
-    doLogout: (state) => {
+    doLogout: (state: IAuthenticateState) => {
       state.isUserSignedIn = false;
     },
-    verifyLoginInputs: (state, action) => {
+    verifyLoginInputs: (
+      state: IAuthenticateState,
+      action: {
+        payload: { userEmail: any; userPassword: any };
+      }
+    ) => {
       const emailExpression =
         /^[a-zA-Z0-9]+[a-zA-Z0-9-+_.]+@[a-zA-Z0-9+-]+\.([a-zA-Z0-9.])+/g;
 
@@ -103,7 +112,10 @@ const Authenticate = createSlice({
 
       state.isLoginInputValid = true;
     },
-    validateUserInputs: (state, action) => {
+    validateUserInputs: (
+      state: IAuthenticateState,
+      action: { payload: { inputName: any; inputValue: any } }
+    ) => {
       const { inputName, inputValue } = action.payload;
 
       switch (inputName) {
@@ -115,6 +127,12 @@ const Authenticate = createSlice({
           state.inputUIValidation.isPasswordValid = inputValue;
           break;
       }
+    },
+    switchLanguage: (
+      state: IAuthenticateState,
+      action: { payload: "EN" | "HI" | "TA" | "TE" | "KN" | "BN" | "ML" | "MR" }
+    ) => {
+      state.currentLanguage = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -164,6 +182,7 @@ export const {
   addLoginInfo,
   validateUserInputs,
   verifyLoginInputs,
+  switchLanguage,
 } = Authenticate.actions;
 
 export default Authenticate.reducer;

@@ -13,7 +13,7 @@ export const DefaultAmazonLayout: React.FC = ({ children }) => {
   return (
     <Defaultlayout>
       {!isCurrentPageSignInUp() && <HeaderMenu />}
-      {children}
+      <div className="after-header-body">{children}</div>
     </Defaultlayout>
   );
 };

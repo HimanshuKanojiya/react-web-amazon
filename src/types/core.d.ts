@@ -23,3 +23,7 @@ interface DefaultDualTextItemProps {
   normalText: string;
   highlightText: string;
 }
+
+interface DefaultLanguagePopUpProps {
+  callbackHandler: () => void;
+}

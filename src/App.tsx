@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import routes from "./routes/routes";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PageAuthWrapper from "helper/authWrapper/PageAuthWrapper";
@@ -29,8 +28,8 @@ function App() {
   }, [authenticate, auth, dispatch]);
 
   return (
-    <DefaultAmazonLayout>
-      <Router>
+    <Router>
+      <DefaultAmazonLayout>
         <Routes>
           {routes.map((route) => {
             const {
@@ -62,8 +61,8 @@ function App() {
             element={<p>Must be lost...anyways this project is in WIP...</p>}
           />
         </Routes>
-      </Router>
-    </DefaultAmazonLayout>
+      </DefaultAmazonLayout>
+    </Router>
   );
 }
 

@@ -7,6 +7,7 @@ export const DualTextItemContainer = styled.button`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.primary.white};
   border: 0;
+  cursor: pointer;
   text-align: left;
 
   & svg {
@@ -30,6 +31,7 @@ export const DualTextItemContainer = styled.button`
       font-size: 14px;
       font-weight: 700;
       color: ${({ theme }) => theme.colors.primary.white};
+      white-space: nowrap;
     }
   }
 `;
