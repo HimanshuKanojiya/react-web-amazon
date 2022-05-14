@@ -52,7 +52,7 @@ const Authenticate = createSlice({
   initialState: {
     loading: false,
     error: null,
-    currentUserdata: null,
+    currentUserData: null,
     isUserSignedIn: false,
     userEmail: "",
     currentLanguage: "EN",
@@ -81,6 +81,12 @@ const Authenticate = createSlice({
     },
     doLogin: (state: IAuthenticateState) => {
       state.isUserSignedIn = true;
+    },
+    setCurrentUserData: (
+      state: IAuthenticateState,
+      action: { payload: User }
+    ) => {
+      state.currentUserData = action.payload;
     },
     doLogout: (state: IAuthenticateState) => {
       state.isUserSignedIn = false;
@@ -139,21 +145,21 @@ const Authenticate = createSlice({
     builder.addCase(performSignInToFirebase.pending, (state) => {
       state.loading = true;
       state.error = null;
-      state.currentUserdata = null;
+      state.currentUserData = null;
       state.isUserSignedIn = false;
     });
 
     builder.addCase(performSignInToFirebase.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload!;
-      state.currentUserdata = null;
+      state.currentUserData = null;
       state.isUserSignedIn = false;
     });
 
     builder.addCase(performSignInToFirebase.fulfilled, (state, action) => {
       state.loading = false;
       state.error = null;
-      state.currentUserdata = action.payload.currentUserData;
+      state.currentUserData = action.payload.currentUserData;
       state.isUserSignedIn = action.payload ? true : false;
     });
 
@@ -169,7 +175,7 @@ const Authenticate = createSlice({
 
     builder.addCase(performSignOutFromFirebase.fulfilled, (state) => {
       state.loading = false;
-      state.currentUserdata = null;
+      state.currentUserData = null;
       state.error = null;
       state.isUserSignedIn = false;
     });
@@ -183,6 +189,7 @@ export const {
   validateUserInputs,
   verifyLoginInputs,
   switchLanguage,
+  setCurrentUserData,
 } = Authenticate.actions;
 
 export default Authenticate.reducer;

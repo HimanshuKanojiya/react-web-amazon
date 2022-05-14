@@ -6,7 +6,7 @@ type firebaseAuthenticationError = {
 interface IAuthenticateState {
   loading: boolean;
   error: null | firebaseAuthenticationError;
-  currentUserdata: null | User;
+  currentUserData: null | User;
   isUserSignedIn: boolean;
   userEmail: string;
   userPassword: string;

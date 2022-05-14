@@ -6,7 +6,7 @@ export const LanguagePopUpContainer = styled.div`
   align-items: flex-start;
   justify-content: center;
   position: absolute;
-  top: 30px;
+  top: 40px;
   left: 0;
   z-index: 1;
   background-color: ${({ theme }) => theme.colors.primary.white};

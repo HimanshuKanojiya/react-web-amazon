@@ -15,15 +15,20 @@ interface DefaultErrorProps {
   issueText: string;
 }
 
+interface DefaultLanguagePopUpProps {
+  callbackHandler: () => void;
+}
+
+interface DefaultListAccountMenuProps {
+  callbackHandler?: () => void;
+}
+
 interface DefaultDualTextItemProps {
   withIcon: boolean;
   icon?: IconType;
   iconPosition?: "left" | "right";
-  actionCTA: () => void;
+  actionCTA?: () => void;
   normalText: string;
   highlightText: string;
-}
-
-interface DefaultLanguagePopUpProps {
-  callbackHandler: () => void;
+  PopUpComponent?: JSX.Element;
 }

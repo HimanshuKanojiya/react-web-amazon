@@ -4,6 +4,7 @@ import { HeaderMenuContainer } from "components/styles/Menus/HeaderMenuContainer
 import { DualTextItem } from "../HeaderMenuItems/DualTextItem";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
+import { ListAccountMenu } from "../Menus/ListAccountMenu";
 
 export const HeaderMenu: React.FC = () => {
   const { AmazonWhiteLogoIcon, LocationIcon, LessOption } = amazonIcons;
@@ -30,9 +31,9 @@ export const HeaderMenu: React.FC = () => {
         withIcon={true}
         iconPosition="right"
         icon={LessOption}
-        actionCTA={() => console.log("Choose address!")}
         normalText="Hello, Sign in"
         highlightText="Account & Lists"
+        PopUpComponent={<ListAccountMenu />}
       />
 
       <DualTextItem
