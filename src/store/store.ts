@@ -18,6 +18,7 @@ export const amazonStore = configureStore({
       },
     });
   },
+  devTools: false,
 });
 
 export type RootState = ReturnType<typeof amazonStore.getState>;
