@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { HeaderMenu } from "components/core/Menus/HeaderMenu";
 import { SubHeaderMenu } from "./Menus/SubHeaderMenu";
+import { FooterMenu } from "./Menus/FooterMenu";
 import { useLocation } from "react-router-dom";
 import Defaultlayout from "components/styles/DefaultLayout";
 import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
@@ -54,6 +55,7 @@ export const DefaultAmazonLayout: React.FC = ({ children }) => {
         </>
       )}
       <div className="after-header-body">{children}</div>
+      {!isCurrentPageLogin && <FooterMenu />}
     </Defaultlayout>
   );
 };

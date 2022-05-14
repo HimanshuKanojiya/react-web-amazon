@@ -1,0 +1,114 @@
+{
+  "getToKnowUs": {
+    "menuTitle": "Get to Know Us",
+    "menuItems": [
+      {
+        "displayTitle": "About Us",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Careers",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Press Releases",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Cares",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Gift a Smile",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Science",
+        "link": "/"
+      }
+    ]
+  },
+  "connectWithUs": {
+    "menuTitle": "Connect with Us",
+    "menuItems": [
+      {
+        "displayTitle": "Facebook",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Twitter",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Instagram",
+        "link": "/"
+      }
+    ]
+  },
+  "makeMoneyWithUs": {
+    "menuTitle": "Make Money with Us",
+    "menuItems": [
+      {
+        "displayTitle": "Sell on Amazon",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Sell under Amazon Accelerator",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Global Selling",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Become an Affiliate",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Fulfilment by Amazon",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Advertise Your Products",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Pay on Merchants",
+        "link": "/"
+      }
+    ]
+  },
+  "letUsHelpYou": {
+    "menuTitle": "Let Us Help You",
+    "menuItems": [
+      {
+        "displayTitle": "COVID-19 and Amazon",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Your Account",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Return Centre",
+        "link": "/"
+      },
+      {
+        "displayTitle": "100% Purchase Protection",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon App Download",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Assistant Download",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Help",
+        "link": "/"
+      }
+    ]
+  }
+}

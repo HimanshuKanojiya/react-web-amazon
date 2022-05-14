@@ -37,3 +37,11 @@ interface DefaultCartItemProps {
   itemsInCart: string;
   actionCTA: () => void;
 }
+
+interface DefaultHorizontalItemsProp {
+  menuTitle: string;
+  menuItems: {
+    displayTitle: string;
+    link: string;
+  }[];
+}
