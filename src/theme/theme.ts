@@ -22,6 +22,7 @@ declare module "styled-components" {
       secondary: {
         darkBlack: string;
         darkBlack2: string;
+        darkBlueSubHeader: string;
         mediun: string;
         blue: string;
         red: string;
@@ -91,6 +92,7 @@ export const theme: DefaultTheme = {
     secondary: {
       darkBlack: "#141920",
       darkBlack2: "#131921",
+      darkBlueSubHeader: "#232f3e",
       mediun: "#252F3D",
       blue: "#0066c0",
       red: "#B12704",
