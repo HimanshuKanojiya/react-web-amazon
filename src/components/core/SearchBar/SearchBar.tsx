@@ -8,10 +8,6 @@ export const SearchBar: React.FC = () => {
   const [searchCategory, updateSearchCategory] =
     useState<string>("all-categories");
 
-  useEffect(() => {
-    console.log(searchCategory.length);
-  }, [searchCategory]);
-
   const handleSearchCategoryWidthClass = () => {
     if (searchCategory.length > 9 && searchCategory.length <= 12)
       return "search-select-cat-w-extend-a";
@@ -21,10 +17,6 @@ export const SearchBar: React.FC = () => {
       return "search-select-cat-w-extend-c";
     if (searchCategory.length >= 17) return "search-select-cat-w-extend-d";
   };
-
-  useEffect(() => {
-    console.log(searchCategory.length);
-  }, [searchCategory]);
 
   return (
     <SearchBarContainer>

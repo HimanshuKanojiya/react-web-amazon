@@ -13,6 +13,7 @@ export const HeaderMenuContainer = styled.div`
     display: flex;
     align-items: center;
     width: 96px;
+    min-width: 96px;
     text-decoration: none;
     margin-right: ${({ theme }) => theme.spaces.m};
 

@@ -7,17 +7,12 @@ import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
 import { ListAccountMenu } from "../Menus/ListAccountMenu";
 import { CartItem } from "../HeaderMenuItems/CartItem";
 import { useAppSelector } from "store/useStoreHooks";
-import { useEffect } from "react";
 
 export const HeaderMenu: React.FC = () => {
   const { AmazonWhiteLogoIcon, LocationIcon, LessOption } = amazonIcons;
   const { currentUserData, isUserSignedIn } = useAppSelector(
     (state) => state.authenticate
   );
-
-  useEffect(() => {
-    console.log(currentUserData);
-  }, [currentUserData]);
 
   return (
     <HeaderMenuContainer>

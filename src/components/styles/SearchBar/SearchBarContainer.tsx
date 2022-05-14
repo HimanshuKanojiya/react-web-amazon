@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 569px;
+  width: 100%;
   margin-right: ${({ theme }) => theme.spaces.s};
   //border: 0;
   //outline: 0;
@@ -12,6 +12,7 @@ export const SearchBarContainer = styled.div`
   & .search-select-category {
     min-width: 50px;
     width: auto;
+    white-space: nowrap;
     height: 100%;
     outline: 0;
     border-top-left-radius: ${({ theme }) => theme.borderRadius.xxs};
@@ -23,11 +24,11 @@ export const SearchBarContainer = styled.div`
   }
 
   & .search-select-cat-w-extend-b {
-    max-width: 125px;
+    max-width: 130px;
   }
 
   & .search-select-cat-w-extend-c {
-    max-width: 154px;
+    width: 172px;
   }
 
   & .search-select-cat-w-extend-d {
