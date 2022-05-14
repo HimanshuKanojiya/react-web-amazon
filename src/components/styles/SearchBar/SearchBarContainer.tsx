@@ -10,34 +10,19 @@ export const SearchBarContainer = styled.div`
   height: 40px;
 
   & .search-select-category {
-    min-width: 50px;
-    width: auto;
-    white-space: nowrap;
+    width: 200px;
+    width: fit-content;
     height: 100%;
-    outline: 0;
+    border: 0;
     border-top-left-radius: ${({ theme }) => theme.borderRadius.xxs};
     border-bottom-left-radius: ${({ theme }) => theme.borderRadius.xxs};
-  }
-
-  & .search-select-cat-w-extend-a {
-    max-width: 110px;
-  }
-
-  & .search-select-cat-w-extend-b {
-    max-width: 130px;
-  }
-
-  & .search-select-cat-w-extend-c {
-    width: 172px;
-  }
-
-  & .search-select-cat-w-extend-d {
-    max-width: 215px;
+    background-color: rgba(220, 220, 220, 50);
   }
 
   & .search-product {
     height: 100%;
     width: 100%;
+    border: 0;
     /* border: 0;
     outline: 0; */
   }

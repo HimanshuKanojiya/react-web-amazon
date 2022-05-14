@@ -8,22 +8,15 @@ export const SearchBar: React.FC = () => {
   const [searchCategory, updateSearchCategory] =
     useState<string>("all-categories");
 
-  const handleSearchCategoryWidthClass = () => {
-    if (searchCategory.length > 9 && searchCategory.length <= 12)
-      return "search-select-cat-w-extend-a";
-    if (searchCategory.length > 12 && searchCategory.length < 15)
-      return "search-select-cat-w-extend-b";
-    if (searchCategory.length >= 15 && searchCategory.length < 17)
-      return "search-select-cat-w-extend-c";
-    if (searchCategory.length >= 17) return "search-select-cat-w-extend-d";
-  };
+  //TO DO:
+  //Search Bar product category select length
+  //Should be responsive and need to remake it
+  //Take it with another Ticket Not with RWA-18
 
   return (
     <SearchBarContainer>
       <select
-        className={`search-select-category ${
-          handleSearchCategoryWidthClass() ?? ""
-        }`}
+        className="search-select-category"
         name="search-select-category"
         defaultValue={searchCategory}
         onChange={(e) => updateSearchCategory(e.target.value)}
