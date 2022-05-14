@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CartItemContainer = styled.div<CartItemContainerProps>`
   display: flex;
   align-items: flex-end;
+  cursor: pointer;
 
   & .shopping-cart-icon {
     display: flex;
