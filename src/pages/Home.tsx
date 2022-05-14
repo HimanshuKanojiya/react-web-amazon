@@ -22,7 +22,7 @@ const Home: React.FC = () => {
           >
             Current development Status:
           </strong>{" "}
-          <p>Header Menu</p>
+          <p>Sub - Header Menu</p>
         </span>
       </div>
     </>
