@@ -57,7 +57,10 @@ export const SignUp = createSlice({
     },
   } as ISignUp,
   reducers: {
-    addBasicInfo: (state, action) => {
+    addBasicInfo: (
+      state: ISignUp,
+      action: { payload: { inputName: any; inputValue: any } }
+    ) => {
       const { inputName, inputValue } = action.payload;
       switch (inputName) {
         case "addUserFullName":
@@ -81,7 +84,10 @@ export const SignUp = createSlice({
           break;
       }
     },
-    validateUIInputs: (state, action) => {
+    validateUIInputs: (
+      state: ISignUp,
+      action: { payload: { inputName: any; inputValue: any } }
+    ) => {
       const { inputName, inputValue } = action.payload;
       switch (inputName) {
         case "isUserNameValid":
@@ -97,7 +103,18 @@ export const SignUp = createSlice({
           state.inputUIValidation.isUserPasswordValid = inputValue;
       }
     },
-    verifyFormInputs: (state, action) => {
+    verifyFormInputs: (
+      state: ISignUp,
+      action: {
+        payload: {
+          userName: any;
+          userEmail: any;
+          userMobileNumber: any;
+          userCountryCode: any;
+          userPassword: any;
+        };
+      }
+    ) => {
       const emailExpression =
         /^[a-zA-Z0-9]+[a-zA-Z0-9-+_.]+@[a-zA-Z0-9+-]+\.([a-zA-Z0-9.])+/g;
 

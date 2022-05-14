@@ -6,11 +6,12 @@ type firebaseAuthenticationError = {
 interface IAuthenticateState {
   loading: boolean;
   error: null | firebaseAuthenticationError;
-  currentUserdata: null | User;
+  currentUserData: null | User;
   isUserSignedIn: boolean;
   userEmail: string;
   userPassword: string;
   isLoginInputValid: boolean;
+  currentLanguage: "EN" | "HI" | "TA" | "TE" | "KN" | "BN" | "ML" | "MR";
   inputUIValidation: {
     isUserEmailValid: boolean;
     isPasswordValid: boolean;

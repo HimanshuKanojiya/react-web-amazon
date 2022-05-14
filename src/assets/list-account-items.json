@@ -1,0 +1,70 @@
+{
+  "listMenu": [
+    {
+      "displayText": "Create a Wish List",
+      "link": "/"
+    },
+    {
+      "displayText": "Wish from Any Website",
+      "link": "/"
+    },
+    {
+      "displayText": "Baby Wishlist",
+      "link": "/"
+    },
+    {
+      "displayText": "Discover Your Style",
+      "link": "/"
+    },
+    {
+      "displayText": "Explore Showroom",
+      "link": "/"
+    }
+  ],
+  "accountMenu": [
+    {
+      "displayText": "Your Account",
+      "link": "/"
+    },
+    {
+      "displayText": "Your Orders",
+      "link": "/"
+    },
+    {
+      "displayText": "Your Wish List",
+      "link": "/"
+    },
+    {
+      "displayText": "Your Recommendations",
+      "link": "/"
+    },
+    {
+      "displayText": "Your Prime Membership",
+      "link": "/"
+    },
+    {
+      "displayText": "Your Prime Video",
+      "link": "/"
+    },
+    {
+      "displayText": "Your Subscribe & Save Items",
+      "link": "/"
+    },
+    {
+      "displayText": "Memberships & Subscriptions",
+      "link": "/"
+    },
+    {
+      "displayText": "Your Amazon Business Account",
+      "link": "/"
+    },
+    {
+      "displayText": "Your Seller Account",
+      "link": "/"
+    },
+    {
+      "displayText": "Manage Your Content and Devices",
+      "link": "/"
+    }
+  ]
+}

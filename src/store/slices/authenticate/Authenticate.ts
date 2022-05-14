@@ -52,9 +52,10 @@ const Authenticate = createSlice({
   initialState: {
     loading: false,
     error: null,
-    currentUserdata: null,
+    currentUserData: null,
     isUserSignedIn: false,
     userEmail: "",
+    currentLanguage: "EN",
     userPassword: "",
     isLoginInputValid: false,
     inputUIValidation: {
@@ -63,7 +64,10 @@ const Authenticate = createSlice({
     },
   } as IAuthenticateState,
   reducers: {
-    addLoginInfo: (state, action) => {
+    addLoginInfo: (
+      state: IAuthenticateState,
+      action: { payload: { inputName: any; inputValue: any } }
+    ) => {
       const { inputName, inputValue } = action.payload;
 
       switch (inputName) {
@@ -75,13 +79,24 @@ const Authenticate = createSlice({
           break;
       }
     },
-    doLogin: (state) => {
+    doLogin: (state: IAuthenticateState) => {
       state.isUserSignedIn = true;
     },
-    doLogout: (state) => {
+    setCurrentUserData: (
+      state: IAuthenticateState,
+      action: { payload: User }
+    ) => {
+      state.currentUserData = action.payload;
+    },
+    doLogout: (state: IAuthenticateState) => {
       state.isUserSignedIn = false;
     },
-    verifyLoginInputs: (state, action) => {
+    verifyLoginInputs: (
+      state: IAuthenticateState,
+      action: {
+        payload: { userEmail: any; userPassword: any };
+      }
+    ) => {
       const emailExpression =
         /^[a-zA-Z0-9]+[a-zA-Z0-9-+_.]+@[a-zA-Z0-9+-]+\.([a-zA-Z0-9.])+/g;
 
@@ -103,7 +118,10 @@ const Authenticate = createSlice({
 
       state.isLoginInputValid = true;
     },
-    validateUserInputs: (state, action) => {
+    validateUserInputs: (
+      state: IAuthenticateState,
+      action: { payload: { inputName: any; inputValue: any } }
+    ) => {
       const { inputName, inputValue } = action.payload;
 
       switch (inputName) {
@@ -116,26 +134,32 @@ const Authenticate = createSlice({
           break;
       }
     },
+    switchLanguage: (
+      state: IAuthenticateState,
+      action: { payload: "EN" | "HI" | "TA" | "TE" | "KN" | "BN" | "ML" | "MR" }
+    ) => {
+      state.currentLanguage = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(performSignInToFirebase.pending, (state) => {
       state.loading = true;
       state.error = null;
-      state.currentUserdata = null;
+      state.currentUserData = null;
       state.isUserSignedIn = false;
     });
 
     builder.addCase(performSignInToFirebase.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload!;
-      state.currentUserdata = null;
+      state.currentUserData = null;
       state.isUserSignedIn = false;
     });
 
     builder.addCase(performSignInToFirebase.fulfilled, (state, action) => {
       state.loading = false;
       state.error = null;
-      state.currentUserdata = action.payload.currentUserData;
+      state.currentUserData = action.payload.currentUserData;
       state.isUserSignedIn = action.payload ? true : false;
     });
 
@@ -151,7 +175,7 @@ const Authenticate = createSlice({
 
     builder.addCase(performSignOutFromFirebase.fulfilled, (state) => {
       state.loading = false;
-      state.currentUserdata = null;
+      state.currentUserData = null;
       state.error = null;
       state.isUserSignedIn = false;
     });
@@ -164,6 +188,8 @@ export const {
   addLoginInfo,
   validateUserInputs,
   verifyLoginInputs,
+  switchLanguage,
+  setCurrentUserData,
 } = Authenticate.actions;
 
 export default Authenticate.reducer;

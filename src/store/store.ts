@@ -12,11 +12,11 @@ export const amazonStore = configureStore({
       serializableCheck: {
         ignoredPaths: [
           "authenticate.currentUserData",
+          "authenticate.setCurrentUserData",
           "authenticate.currentUserdata.currentUserData",
           "signUp.currentUserData",
-          "signUp.currentUserdata.currentUserData",
         ],
-        ignoredActionPaths: ["payload.currentUserData"],
+        ignoredActionPaths: ["payload.currentUserData", "payload"],
       },
     });
   },
