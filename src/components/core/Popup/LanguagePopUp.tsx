@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { amazonIcons } from "assets/icons";
 import { LanguagePopUpContainer } from "components/styles/Popups/LanguagePopUpContainer";
-import { useAppDispatch } from "store/useStoreHooks";
+import { useAppDispatch, useAppSelector } from "store/useStoreHooks";
 import { switchLanguage } from "store/slices/authenticate/Authenticate";
 
 export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
@@ -10,6 +10,7 @@ export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
 }) => {
   const { IndiaFlag } = amazonIcons;
   const dispatch = useAppDispatch();
+  const { currentLanguage } = useAppSelector((state) => state.authenticate);
 
   const switchLang = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.value) return;
@@ -39,7 +40,7 @@ export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
           onChange={switchLang}
           value="EN"
           id="English"
-          defaultChecked
+          checked={currentLanguage === "EN"}
         />
       </div>
       <div className="menu-divider"></div>
@@ -51,6 +52,7 @@ export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
           onChange={switchLang}
           value="HI"
           id="Hindi"
+          checked={currentLanguage === "HI"}
         />
       </div>
       <div className="pick-lang-option">
@@ -61,6 +63,7 @@ export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
           id="Tamil"
           onChange={switchLang}
           value="TA"
+          checked={currentLanguage === "TA"}
         />
       </div>
       <div className="pick-lang-option">
@@ -71,6 +74,7 @@ export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
           id="Telugu"
           onChange={switchLang}
           value="TE"
+          checked={currentLanguage === "TE"}
         />
       </div>
       <div className="pick-lang-option">
@@ -81,6 +85,7 @@ export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
           id="Kannada"
           onChange={switchLang}
           value="KN"
+          checked={currentLanguage === "KN"}
         />
       </div>
       <div className="pick-lang-option">
@@ -91,6 +96,7 @@ export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
           id="Bangala"
           onChange={switchLang}
           value="BN"
+          checked={currentLanguage === "BN"}
         />
       </div>
       <div className="pick-lang-option">
@@ -101,6 +107,7 @@ export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
           id="Malyalam"
           onChange={switchLang}
           value="ML"
+          checked={currentLanguage === "ML"}
         />
       </div>
       <div className="pick-lang-option pick-lang-option-default">
@@ -111,6 +118,7 @@ export const LanguagePopUp: React.FC<DefaultLanguagePopUpProps> = ({
           id="Marathi"
           onChange={switchLang}
           value="MR"
+          checked={currentLanguage === "MR"}
         />
       </div>
       <div className="menu-divider"></div>

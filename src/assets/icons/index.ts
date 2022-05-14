@@ -5,9 +5,11 @@ import { GoTriangleRight, GoTriangleDown, GoSearch } from "react-icons/go";
 import { BsInfoLg, BsExclamationLg } from "react-icons/bs";
 import { RiAlertLine } from "react-icons/ri";
 import { IoLocationOutline } from "react-icons/io5";
+import AmazonNavSprite from "./amazon-nav-sprite.png";
 
 export const amazonIcons = {
   AmazonLogoIcon,
+  AmazonNavSprite,
   IndiaFlag: IndiaFlag,
   AmazonWhiteLogoIcon,
   ExtendOption: GoTriangleRight,

@@ -88,6 +88,22 @@ export const ListAccountMenuContainer = styled.div`
           color: ${({ theme }) => theme.colors.primary.orange_2};
         }
       }
+
+      & .account-menu-signout {
+        font-size: 13px;
+        color: #444;
+        white-space: nowrap;
+        text-decoration: none;
+        cursor: pointer;
+        background: transparent;
+        border: 0;
+        text-align: left;
+
+        &:hover {
+          text-decoration: underline;
+          color: ${({ theme }) => theme.colors.primary.orange_2};
+        }
+      }
     }
 
     & .menu-divider-horizontal {

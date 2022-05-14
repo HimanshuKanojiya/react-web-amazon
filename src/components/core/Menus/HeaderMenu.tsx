@@ -5,6 +5,7 @@ import { DualTextItem } from "../HeaderMenuItems/DualTextItem";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
 import { ListAccountMenu } from "../Menus/ListAccountMenu";
+import { CartItem } from "../HeaderMenuItems/CartItem";
 import { useAppSelector } from "store/useStoreHooks";
 import { useEffect } from "react";
 
@@ -57,6 +58,8 @@ export const HeaderMenu: React.FC = () => {
         normalText="Returns"
         highlightText="& Orders"
       />
+
+      <CartItem itemsInCart="0" actionCTA={() => console.log("ITEM CART")} />
     </HeaderMenuContainer>
   );
 };

@@ -32,3 +32,8 @@ interface DefaultDualTextItemProps {
   highlightText: string;
   PopUpComponent?: JSX.Element;
 }
+
+interface DefaultCartItemProps {
+  itemsInCart: string;
+  actionCTA: () => void;
+}

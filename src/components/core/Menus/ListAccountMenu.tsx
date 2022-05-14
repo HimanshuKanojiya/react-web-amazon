@@ -3,13 +3,15 @@ import { ListAccountMenuContainer } from "components/styles/Menus/ListAccountMen
 import { Link } from "react-router-dom";
 import { DefaultActionBasedButton } from "../Button/DefaultActionBasedButton";
 import ListAccountMenuItems from "assets/list-account-items.json";
-import { useAppSelector } from "store/useStoreHooks";
+import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
+import { performSignOutFromFirebase } from "store/slices/authenticate/Authenticate";
 import { useNavigate } from "react-router-dom";
 
 export const ListAccountMenu: React.FC<DefaultListAccountMenuProps> = ({
   callbackHandler,
 }) => {
   const { isUserSignedIn } = useAppSelector((state) => state.authenticate);
+  const dispatch = useAppDispatch();
   const history = useNavigate();
 
   return (
@@ -52,6 +54,18 @@ export const ListAccountMenu: React.FC<DefaultListAccountMenuProps> = ({
               </Link>
             );
           })}
+          {isUserSignedIn && (
+            <>
+              <div className="menu-divider-vertical"></div>
+              <Link to="/">Switch Account</Link>
+              <button
+                className="account-menu-signout"
+                onClick={() => dispatch(performSignOutFromFirebase(null))}
+              >
+                Sign Out
+              </button>
+            </>
+          )}
         </div>
       </div>
     </ListAccountMenuContainer>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DualTextItemContainer = styled.button`
+export const DualTextItemContainer = styled.div`
   position: relative;
   background-color: transparent;
   margin-right: ${({ theme }) => theme.spaces.s};
