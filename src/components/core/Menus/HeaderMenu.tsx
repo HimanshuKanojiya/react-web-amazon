@@ -5,9 +5,18 @@ import { DualTextItem } from "../HeaderMenuItems/DualTextItem";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
 import { ListAccountMenu } from "../Menus/ListAccountMenu";
+import { useAppSelector } from "store/useStoreHooks";
+import { useEffect } from "react";
 
 export const HeaderMenu: React.FC = () => {
   const { AmazonWhiteLogoIcon, LocationIcon, LessOption } = amazonIcons;
+  const { currentUserData, isUserSignedIn } = useAppSelector(
+    (state) => state.authenticate
+  );
+
+  useEffect(() => {
+    console.log(currentUserData);
+  }, [currentUserData]);
 
   return (
     <HeaderMenuContainer>
@@ -31,7 +40,13 @@ export const HeaderMenu: React.FC = () => {
         withIcon={true}
         iconPosition="right"
         icon={LessOption}
-        normalText="Hello, Sign in"
+        normalText={`Hello, ${
+          //This should be changed after
+          //setting profile related data in firebase API
+          isUserSignedIn && currentUserData
+            ? currentUserData.email.split("@")[0]
+            : "Sign in"
+        }`}
         highlightText="Account & Lists"
         PopUpComponent={<ListAccountMenu />}
       />
