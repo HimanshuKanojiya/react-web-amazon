@@ -45,3 +45,10 @@ interface DefaultHorizontalItemsProp {
     link: string;
   }[];
 }
+
+interface DefaultVerticalListItemsProp {
+  menuItems: {
+    displayTitle: string;
+    link: string;
+  }[];
+}
