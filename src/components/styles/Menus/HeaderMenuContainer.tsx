@@ -9,21 +9,6 @@ export const HeaderMenuContainer = styled.div`
   color: ${({ theme }) => theme.colors.primary.white};
   box-sizing: border-box;
 
-  .amazon-logo {
-    display: flex;
-    align-items: center;
-    width: 96px;
-    min-width: 96px;
-    text-decoration: none;
-    margin-right: ${({ theme }) => theme.spaces.m};
-
-    & img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
   & .amazon-choose-address,
   & .signed-in-and-account {
     display: flex;

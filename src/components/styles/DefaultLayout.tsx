@@ -5,7 +5,7 @@ const Defaultlayout = styled.div`
 
   & .after-header-body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: ${({ theme }) => theme.colors.primary.white};
   }
 `;

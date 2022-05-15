@@ -1,0 +1,271 @@
+{
+  "getToKnowUs": {
+    "menuTitle": "Get to Know Us",
+    "menuItems": [
+      {
+        "displayTitle": "About Us",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Careers",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Press Releases",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Cares",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Gift a Smile",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Science",
+        "link": "/"
+      }
+    ]
+  },
+  "connectWithUs": {
+    "menuTitle": "Connect with Us",
+    "menuItems": [
+      {
+        "displayTitle": "Facebook",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Twitter",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Instagram",
+        "link": "/"
+      }
+    ]
+  },
+  "makeMoneyWithUs": {
+    "menuTitle": "Make Money with Us",
+    "menuItems": [
+      {
+        "displayTitle": "Sell on Amazon",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Sell under Amazon Accelerator",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Global Selling",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Become an Affiliate",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Fulfilment by Amazon",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Advertise Your Products",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Pay on Merchants",
+        "link": "/"
+      }
+    ]
+  },
+  "letUsHelpYou": {
+    "menuTitle": "Let Us Help You",
+    "menuItems": [
+      {
+        "displayTitle": "COVID-19 and Amazon",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Your Account",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Return Centre",
+        "link": "/"
+      },
+      {
+        "displayTitle": "100% Purchase Protection",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon App Download",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Amazon Assistant Download",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Help",
+        "link": "/"
+      }
+    ]
+  },
+  "countries": {
+    "menuItems": [
+      {
+        "displayTitle": "Australia",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Brazil",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Canada",
+        "link": "/"
+      },
+      {
+        "displayTitle": "China",
+        "link": "/"
+      },
+      {
+        "displayTitle": "France",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Germany",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Italy",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Japan",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Mexico",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Netherlands",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Poland",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Singapore",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Spain",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Turkey",
+        "link": "/"
+      },
+      {
+        "displayTitle": "United Arab Emirates",
+        "link": "/"
+      },
+      {
+        "displayTitle": "United Kingdom",
+        "link": "/"
+      },
+      {
+        "displayTitle": "United States",
+        "link": "/"
+      }
+    ]
+  },
+  "footerSecondary": {
+    "abeBooks": {
+      "menuTitle": "AbeBooks",
+      "menuItem": {
+        "displayTitle": "Books, art & collectibles",
+        "link": "/"
+      }
+    },
+    "amazonWebServices": {
+      "menuTitle": "Amazon Web Services",
+      "menuItem": {
+        "displayTitle": "Scalable Cloud",
+        "link": "/"
+      }
+    },
+    "audible": {
+      "menuTitle": "Audible",
+      "menuItem": {
+        "displayTitle": "Download Audio Books",
+        "link": "/"
+      }
+    },
+    "dpReview": {
+      "menuTitle": "DPReview",
+      "menuItem": {
+        "displayTitle": "Digital Photography",
+        "link": "/"
+      }
+    },
+    "imdb": {
+      "menuTitle": "IMDb",
+      "menuItem": {
+        "displayTitle": "Movies, TV & Celebrities",
+        "link": "/"
+      }
+    },
+    "shopbop": {
+      "menuTitle": "Shopbop",
+      "menuItem": {
+        "displayTitle": "Designer Fashion Brands",
+        "link": "/"
+      }
+    },
+    "amazonBusiness": {
+      "menuTitle": "Amazon Business",
+      "menuItem": {
+        "displayTitle": "Everything for Your Business",
+        "link": "/"
+      }
+    },
+    "primeNow": {
+      "menuTitle": "Prime Now",
+      "menuItem": {
+        "displayTitle": "2-Hour Delivery on Everyday Items",
+        "link": "/"
+      }
+    },
+    "amazonPrimeMusic": {
+      "menuTitle": "Amazon Prime Music",
+      "menuItem": {
+        "displayTitle": "90 milion songs, ad-free Over 15 milion podcast episodes",
+        "link": "/"
+      }
+    }
+  },
+  "tertiary": {
+    "menuItems": [
+      {
+        "displayTitle": "Conditions of Use & Sale",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Privacy Notice",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Internet-Based Ads",
+        "link": "/"
+      },
+      {
+        "displayTitle": "© 1996-2022, Amazon.com, Inc. or its affiliates",
+        "link": ""
+      }
+    ]
+  }
+}

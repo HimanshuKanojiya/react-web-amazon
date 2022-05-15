@@ -1,4 +1,5 @@
 import React from "react";
+import { AmazonLogo } from "../AmazonLogo";
 import { amazonIcons } from "assets/icons";
 import { HeaderMenuContainer } from "components/styles/Menus/HeaderMenuContainer";
 import { DualTextItem } from "../HeaderMenuItems/DualTextItem";
@@ -9,16 +10,14 @@ import { CartItem } from "../HeaderMenuItems/CartItem";
 import { useAppSelector } from "store/useStoreHooks";
 
 export const HeaderMenu: React.FC = () => {
-  const { AmazonWhiteLogoIcon, LocationIcon, LessOption } = amazonIcons;
+  const { LocationIcon, LessOption } = amazonIcons;
   const { currentUserData, isUserSignedIn } = useAppSelector(
     (state) => state.authenticate
   );
 
   return (
     <HeaderMenuContainer>
-      <a className="amazon-logo" href="/">
-        <img src={AmazonWhiteLogoIcon} alt="amazon-logo" />
-      </a>
+      <AmazonLogo />
 
       <DualTextItem
         withIcon={true}
