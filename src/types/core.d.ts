@@ -52,3 +52,11 @@ interface DefaultVerticalListItemsProp {
     link: string;
   }[];
 }
+
+interface DefaultVerticalSingleListItemsProp {
+  menuTitle: string;
+  menuItem: {
+    displayTitle: string;
+    link: string;
+  };
+}

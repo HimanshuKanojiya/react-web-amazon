@@ -182,5 +182,90 @@
         "link": "/"
       }
     ]
+  },
+  "footerSecondary": {
+    "abeBooks": {
+      "menuTitle": "AbeBooks",
+      "menuItem": {
+        "displayTitle": "Books, art & collectibles",
+        "link": "/"
+      }
+    },
+    "amazonWebServices": {
+      "menuTitle": "Amazon Web Services",
+      "menuItem": {
+        "displayTitle": "Scalable Cloud",
+        "link": "/"
+      }
+    },
+    "audible": {
+      "menuTitle": "Audible",
+      "menuItem": {
+        "displayTitle": "Download Audio Books",
+        "link": "/"
+      }
+    },
+    "dpReview": {
+      "menuTitle": "DPReview",
+      "menuItem": {
+        "displayTitle": "Digital Photography",
+        "link": "/"
+      }
+    },
+    "imdb": {
+      "menuTitle": "IMDb",
+      "menuItem": {
+        "displayTitle": "Movies, TV & Celebrities",
+        "link": "/"
+      }
+    },
+    "shopbop": {
+      "menuTitle": "Shopbop",
+      "menuItem": {
+        "displayTitle": "Designer Fashion Brands",
+        "link": "/"
+      }
+    },
+    "amazonBusiness": {
+      "menuTitle": "Amazon Business",
+      "menuItem": {
+        "displayTitle": "Everything for Your Business",
+        "link": "/"
+      }
+    },
+    "primeNow": {
+      "menuTitle": "Prime Now",
+      "menuItem": {
+        "displayTitle": "2-Hour Delivery on Everyday Items",
+        "link": "/"
+      }
+    },
+    "amazonPrimeMusic": {
+      "menuTitle": "Amazon Prime Music",
+      "menuItem": {
+        "displayTitle": "90 milion songs, ad-free Over 15 milion podcast episodes",
+        "link": "/"
+      }
+    }
+  },
+  "tertiary": {
+    "menuItems": [
+      {
+        "displayTitle": "Conditions of Use & Sale",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Privacy Notice",
+        "link": "/"
+      },
+      {
+        "displayTitle": "Internet-Based Ads",
+        "link": "/"
+      },
+      {
+        "displayTitle": "© 1996-2022, Amazon.com, Inc. or its affiliates",
+        "link": ""
+      }
+    ]
   }
 }

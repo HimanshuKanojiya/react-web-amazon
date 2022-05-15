@@ -3,13 +3,11 @@ import { FooterMenuContainer } from "components/styles/Menus/FooterMenuContainer
 import { HorizontalListItems } from "../FooterMenuItems/HorizontalListItems";
 import { VerticalListItems } from "../FooterMenuItems/VerticalListItems";
 import { GlobeLangSwitcherButton } from "../LanguageSwitcher/GlobeLangSwitcherButton";
+import { VerticalSingleListItems } from "../FooterMenuItems/VertialSingleListItems";
 import { AmazonLogo } from "../AmazonLogo";
-import { amazonIcons } from "assets/icons";
 import FooterMenuItems from "assets/footer-menu-items.json";
 
 export const FooterMenu: React.FC = () => {
-  const { GlobeIcon, LessOption, ExtendOption } = amazonIcons;
-
   return (
     <FooterMenuContainer>
       <div className="footer-menu">
@@ -25,6 +23,38 @@ export const FooterMenu: React.FC = () => {
         </div>
         <div className="countries-list">
           <VerticalListItems {...FooterMenuItems.countries} />
+        </div>
+      </div>
+      <div className="footer-secondary-menu">
+        <div className="secondary-menu">
+          <VerticalSingleListItems
+            {...FooterMenuItems.footerSecondary.abeBooks}
+          />
+          <VerticalSingleListItems
+            {...FooterMenuItems.footerSecondary.amazonWebServices}
+          />
+          <VerticalSingleListItems
+            {...FooterMenuItems.footerSecondary.audible}
+          />
+          <VerticalSingleListItems
+            {...FooterMenuItems.footerSecondary.dpReview}
+          />
+          <VerticalSingleListItems {...FooterMenuItems.footerSecondary.imdb} />
+          <VerticalSingleListItems
+            {...FooterMenuItems.footerSecondary.shopbop}
+          />
+          <VerticalSingleListItems
+            {...FooterMenuItems.footerSecondary.amazonBusiness}
+          />
+          <VerticalSingleListItems
+            {...FooterMenuItems.footerSecondary.primeNow}
+          />
+          <VerticalSingleListItems
+            {...FooterMenuItems.footerSecondary.amazonPrimeMusic}
+          />
+        </div>
+        <div className="tertiary">
+          <VerticalListItems {...FooterMenuItems.tertiary} />
         </div>
       </div>
     </FooterMenuContainer>
