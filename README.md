@@ -11,7 +11,7 @@ In this project, we have used these technologies:
 - Firebase (for authentication purposes)
 - JIRA & Scrum (for project management)
 
-**Current Sprint:** 4
+**Current Sprint:** 5 (Planning will be started soon)
 
 ### Instrunctions to use this project:
 

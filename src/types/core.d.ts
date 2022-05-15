@@ -14,3 +14,49 @@ interface DefaultErrorProps {
   title: string;
   issueText: string;
 }
+
+interface DefaultLanguagePopUpProps {
+  callbackHandler: () => void;
+}
+
+interface DefaultListAccountMenuProps {
+  callbackHandler?: () => void;
+}
+
+interface DefaultDualTextItemProps {
+  withIcon: boolean;
+  icon?: IconType;
+  iconPosition?: "left" | "right";
+  actionCTA?: () => void;
+  normalText: string;
+  highlightText: string;
+  PopUpComponent?: JSX.Element;
+}
+
+interface DefaultCartItemProps {
+  itemsInCart: string;
+  actionCTA: () => void;
+}
+
+interface DefaultHorizontalItemsProp {
+  menuTitle: string;
+  menuItems: {
+    displayTitle: string;
+    link: string;
+  }[];
+}
+
+interface DefaultVerticalListItemsProp {
+  menuItems: {
+    displayTitle: string;
+    link: string;
+  }[];
+}
+
+interface DefaultVerticalSingleListItemsProp {
+  menuTitle: string;
+  menuItem: {
+    displayTitle: string;
+    link: string;
+  };
+}

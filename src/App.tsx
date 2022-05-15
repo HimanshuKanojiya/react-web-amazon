@@ -1,36 +1,13 @@
-import React, { useEffect } from "react";
-import "./App.css";
+import React from "react";
 import routes from "./routes/routes";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PageAuthWrapper from "helper/authWrapper/PageAuthWrapper";
-import Defaultlayout from "components/styles/DefaultLayout";
-import { useAppSelector, useAppDispatch } from "store/useStoreHooks";
-import { doLogin } from "store/slices/authenticate/Authenticate";
-import { useFirebaseAuthGetUseCase } from "service/useCases/authenticateUseCases/useFirebaseAuthGetUseCase";
+import { DefaultAmazonLayout } from "components/core/DefaultAmazonLayout";
 
 function App() {
-  const authenticate = useAppSelector((state) => state.authenticate);
-  const auth = useFirebaseAuthGetUseCase();
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (!authenticate.isUserSignedIn) {
-      return;
-    }
-
-    auth.then((e) => {
-      e.onAuthStateChanged((currentUser) => {
-        if (currentUser) {
-          dispatch(doLogin());
-          return;
-        }
-      });
-    });
-  }, [authenticate, auth, dispatch]);
-
   return (
-    <Defaultlayout>
-      <Router>
+    <Router>
+      <DefaultAmazonLayout>
         <Routes>
           {routes.map((route) => {
             const {
@@ -62,8 +39,8 @@ function App() {
             element={<p>Must be lost...anyways this project is in WIP...</p>}
           />
         </Routes>
-      </Router>
-    </Defaultlayout>
+      </DefaultAmazonLayout>
+    </Router>
   );
 }
 

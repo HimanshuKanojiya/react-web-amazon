@@ -1,0 +1,217 @@
+[
+  {
+    "key": "all-categories",
+    "name": "All Categories",
+    "value": "all-categories"
+  },
+  {
+    "key": "alexa-skills",
+    "name": "Alexa Skills",
+    "value": "alexa-skills"
+  },
+  {
+    "key": "amazon-devices",
+    "name": "Amazon Devices",
+    "value": "amazon-devices"
+  },
+  {
+    "key": "amazon-fashion",
+    "name": "Amazon Fashion",
+    "value": "amazon-fashion"
+  },
+  {
+    "key": "amazon-fresh",
+    "name": "Amazon Fresh",
+    "value": "amazon-fresh"
+  },
+  {
+    "key": "amazon-pharmacy",
+    "name": "Amazon Pharmacy",
+    "value": "amazon-Pharmacy"
+  },
+  {
+    "key": "appliances",
+    "name": "Appliances",
+    "value": "appliances"
+  },
+  {
+    "key": "apps-and-games",
+    "name": "Apps & Games",
+    "value": "apps-and-games"
+  },
+  {
+    "key": "baby",
+    "name": "Baby",
+    "value": "baby"
+  },
+  {
+    "key": "beauty",
+    "name": "Beauty",
+    "value": "beauty"
+  },
+  {
+    "key": "books",
+    "name": "Books",
+    "value": "books"
+  },
+  {
+    "key": "car-and-motorbike",
+    "name": "Car & Motorbike",
+    "value": "car-and-motorbike"
+  },
+  {
+    "key": "clothing-and-accessories",
+    "name": "Clothing & Accessories",
+    "value": "clothing-and-accessories"
+  },
+  {
+    "key": "collectibles",
+    "name": "Collectibles",
+    "value": "collectibles"
+  },
+  {
+    "key": "computer-and-accessories",
+    "name": "Computers & Accessories",
+    "value": "computer-and-accessories"
+  },
+  {
+    "key": "deals",
+    "name": "Deals",
+    "value": "deals"
+  },
+  {
+    "key": "electronics",
+    "name": "Electronics",
+    "value": "electronics"
+  },
+  {
+    "key": "furniture",
+    "name": "Furniture",
+    "value": "furniture"
+  },
+  {
+    "key": "garden-and-outdoors",
+    "name": "Garden & Outdoors",
+    "value": "furniture"
+  },
+  {
+    "key": "gift-cards",
+    "name": "Gift Cards",
+    "value": "gift-cards"
+  },
+  {
+    "key": "grocery-and-gourmet-foods",
+    "name": "Grocery & Gourmet Foods",
+    "value": "grocery-and-gourmet-foods"
+  },
+  {
+    "key": "health-and-personal-care",
+    "name": "Health & Personal Care",
+    "value": "health-and-personal-care"
+  },
+  {
+    "key": "home-and-kitchen",
+    "name": "Home & Kitchen",
+    "value": "home-and-kitchen"
+  },
+  {
+    "key": "industrial-and-scientific",
+    "name": "Industrial & Scientific",
+    "value": "industrial-and-scientific"
+  },
+  {
+    "key": "jewellery",
+    "name": "Jewellery",
+    "value": "jewellery"
+  },
+  {
+    "key": "kindle-store",
+    "name": "Kindle Store",
+    "value": "kindle-store"
+  },
+  {
+    "key": "luggage-and-bags",
+    "name": "Luggage and Bags",
+    "value": "luggage-and-bags"
+  },
+  {
+    "key": "luxury-beauty",
+    "name": "Luxury Beauth",
+    "value": "luxury-beauty"
+  },
+  {
+    "key": "movies-and-tv-shows",
+    "name": "Movies & TV Shows",
+    "value": "movies-and-tv-shows"
+  },
+  {
+    "key": "music",
+    "name": "Music",
+    "value": "music"
+  },
+  {
+    "key": "musical-instruments",
+    "name": "Musical Instruments",
+    "value": "musical-instruments"
+  },
+  {
+    "key": "office-products",
+    "name": "Office Products",
+    "value": "office-products"
+  },
+  {
+    "key": "pet-supplies",
+    "name": "Pet Supplies",
+    "value": "pet-supplies"
+  },
+  {
+    "key": "prime-video",
+    "name": "Prime Video",
+    "value": "prime-video"
+  },
+  {
+    "key": "shoes-and-handbags",
+    "name": "Shoes & Handbags",
+    "value": "shoes-and-handbags"
+  },
+  {
+    "key": "software",
+    "name": "Software",
+    "value": "software"
+  },
+  {
+    "key": "sports-fitness-and-outdoors",
+    "name": "Sports, Fitness & Outdoors",
+    "value": "sports-fitness-and-outdoors"
+  },
+  {
+    "key": "subscribe-and-save",
+    "name": "Subscribe & Save",
+    "value": "subscribe-and-save"
+  },
+  {
+    "key": "tools-and-home-improvement",
+    "name": "Tools & Home Improvement",
+    "value": "tools-and-home-improvement"
+  },
+  {
+    "key": "toys-and-games",
+    "name": "Toys & Games",
+    "value": "toys-and-games"
+  },
+  {
+    "key": "under-500",
+    "name": "Under ₹500",
+    "value": "under-500"
+  },
+  {
+    "key": "video-games",
+    "name": "Video Games",
+    "value": "video-games"
+  },
+  {
+    "key": "watches",
+    "name": "Watches",
+    "value": "watches"
+  }
+]
