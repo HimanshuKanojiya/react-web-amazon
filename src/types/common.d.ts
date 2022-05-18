@@ -5,3 +5,7 @@ interface useOnPageSEOHandlerParams {
 interface CartItemContainerProps {
   AmazonNavSprite: string;
 }
+
+interface AmazonLogoContainerProps {
+  AmazonNavSprite: string;
+}

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AmazonLogoContainer = styled.a`
+export const AmazonLogoContainer = styled.a<AmazonLogoContainerProps>`
   display: flex;
   align-items: center;
   width: 96px;
@@ -8,9 +8,11 @@ export const AmazonLogoContainer = styled.a`
   text-decoration: none;
   margin-right: ${({ theme }) => theme.spaces.m};
 
-  & img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  & .amazon-logo {
+    background-image: url(${({ AmazonNavSprite }) => AmazonNavSprite});
+    width: 96px;
+    height: 32px;
+    background-position: -7px -48px;
+    background-size: 336px;
   }
 `;
