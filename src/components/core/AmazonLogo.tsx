@@ -3,11 +3,11 @@ import { AmazonLogoContainer } from "components/styles/AmazonLogoContainer";
 import { amazonIcons } from "assets/icons";
 
 export const AmazonLogo: React.FC = () => {
-  const { AmazonWhiteLogoIcon } = amazonIcons;
+  const { AmazonNavSprite } = amazonIcons;
 
   return (
-    <AmazonLogoContainer href="/">
-      <img src={AmazonWhiteLogoIcon} alt="amazon-logo" />
+    <AmazonLogoContainer AmazonNavSprite={AmazonNavSprite} href="/">
+      <div className="amazon-logo"></div>
     </AmazonLogoContainer>
   );
 };
