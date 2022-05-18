@@ -1,8 +1,17 @@
 import React from "react";
+import faker from "faker";
+import { OneImageProductCard } from "components/core/Cards/OneImageProductCard";
 
 const Home: React.FC = () => {
   return (
     <>
+      <OneImageProductCard
+        title="Up to 70% off | Clearance store"
+        image={faker.image.sports()}
+        ctaText="See more"
+        ctaLink="/"
+      />
+
       <div>
         <h1>WIP - Work in Progress</h1>
         <p>

@@ -60,3 +60,10 @@ interface DefaultVerticalSingleListItemsProp {
     link: string;
   };
 }
+
+interface DefaultOneImageProductCardProps {
+  title: string;
+  image: string;
+  ctaText: string;
+  ctaLink: string;
+}

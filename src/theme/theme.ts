@@ -18,6 +18,7 @@ declare module "styled-components" {
         orange: string;
         orange_2: string;
         orange_3: string;
+        homeBg: string;
       };
       secondary: {
         darkBlack: string;
@@ -88,6 +89,7 @@ export const theme: DefaultTheme = {
       orange: "#F19D38",
       orange_2: "#e77600",
       orange_3: "#febd69",
+      homeBg: "#eaeded",
     },
     secondary: {
       darkBlack: "#141920",
