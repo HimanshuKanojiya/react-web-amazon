@@ -67,3 +67,14 @@ interface DefaultOneImageProductCardProps {
   ctaText: string;
   ctaLink: string;
 }
+
+interface DefaultMultiImageProductCardProps {
+  title: string;
+  subProductImage: {
+    image: string;
+    title: string;
+    ctaLink: string;
+  }[];
+  ctaText: string;
+  ctaLink: string;
+}

@@ -13,7 +13,11 @@ export const SubHeaderMenu: React.FC = () => {
         <HamburgerMenu /> All
       </button>
       {SubHeaderMenuItems.map((menuItem) => {
-        return <Link to={menuItem.link}>{menuItem.displayText}</Link>;
+        return (
+          <Link key={menuItem.displayText} to={menuItem.link}>
+            {menuItem.displayText}
+          </Link>
+        );
       })}
     </SubHeaderMenuContainer>
   );
