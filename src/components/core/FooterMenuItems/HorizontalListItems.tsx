@@ -10,7 +10,11 @@ export const HorizontalListItems: React.FC<DefaultHorizontalItemsProp> = ({
     <HorizontalListItemsContainer>
       <strong>{menuTitle}</strong>
       {menuItems.map((menuItem) => {
-        return <Link to={menuItem.link}>{menuItem.displayTitle}</Link>;
+        return (
+          <Link key={menuItem.displayTitle} to={menuItem.link}>
+            {menuItem.displayTitle}
+          </Link>
+        );
       })}
     </HorizontalListItemsContainer>
   );

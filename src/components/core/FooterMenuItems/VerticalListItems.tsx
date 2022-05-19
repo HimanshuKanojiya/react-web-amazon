@@ -9,9 +9,13 @@ export const VerticalListItems: React.FC<DefaultVerticalListItemsProp> = ({
     <VerticalListItemsContainer>
       {menuItems.map((menuItem) => {
         if (!menuItem.link) {
-          return <p>{menuItem.displayTitle}</p>;
+          return <p key={menuItem.displayTitle}>{menuItem.displayTitle}</p>;
         }
-        return <Link to={menuItem.link}>{menuItem.displayTitle}</Link>;
+        return (
+          <Link key={menuItem.displayTitle} to={menuItem.link}>
+            {menuItem.displayTitle}
+          </Link>
+        );
       })}
     </VerticalListItemsContainer>
   );
