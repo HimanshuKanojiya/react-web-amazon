@@ -2,6 +2,7 @@ import React from "react";
 import faker from "faker";
 import { MultiImageProductCard } from "components/core/Cards/MultiImageProductCard";
 import { OneImageProductCard } from "components/core/Cards/OneImageProductCard";
+import { Carousel } from "components/core/Carousel/Carousel";
 
 const Home: React.FC = () => {
   return (
@@ -45,6 +46,68 @@ const Home: React.FC = () => {
           ]}
           ctaText="See more"
           ctaLink="/"
+        />
+      </div>
+
+      <div
+        style={{
+          marginBlock: "8px",
+        }}
+      >
+        <Carousel
+          title="Up to 45% off | Handpicked furniture collection from local shops"
+          ctaText="See all offers"
+          ctaLink="/"
+          productItems={[
+            {
+              productName: faker.lorem.lines(1),
+              productResouceLink: faker.image.animals(),
+              contentType: "image",
+              ctaLink: "login",
+            },
+            {
+              productName: faker.lorem.lines(1),
+              productResouceLink: faker.image.animals(),
+              contentType: "image",
+              ctaLink: "",
+            },
+            {
+              productName: faker.lorem.lines(1),
+              productResouceLink: faker.image.animals(),
+              contentType: "image",
+              ctaLink: "",
+            },
+            {
+              productName: faker.lorem.lines(1),
+              productResouceLink: faker.image.animals(),
+              contentType: "image",
+              ctaLink: "",
+            },
+            {
+              productName: faker.lorem.lines(1),
+              productResouceLink: faker.image.animals(),
+              contentType: "image",
+              ctaLink: "",
+            },
+            {
+              productName: faker.lorem.lines(1),
+              productResouceLink: faker.image.animals(),
+              contentType: "image",
+              ctaLink: "",
+            },
+            {
+              productName: faker.lorem.lines(1),
+              productResouceLink: faker.image.animals(),
+              contentType: "image",
+              ctaLink: "",
+            },
+            {
+              productName: faker.lorem.lines(1),
+              productResouceLink: faker.image.city(),
+              contentType: "image",
+              ctaLink: "",
+            },
+          ]}
         />
       </div>
 

@@ -38,27 +38,23 @@ interface DefaultCartItemProps {
   actionCTA: () => void;
 }
 
+interface DefaultMenuItemProps {
+  displayTitle: string;
+  link: string;
+}
+
 interface DefaultHorizontalItemsProp {
   menuTitle: string;
-  menuItems: {
-    displayTitle: string;
-    link: string;
-  }[];
+  menuItems: DefaultMenuItemProps[];
 }
 
 interface DefaultVerticalListItemsProp {
-  menuItems: {
-    displayTitle: string;
-    link: string;
-  }[];
+  menuItems: DefaultMenuItemProps[];
 }
 
 interface DefaultVerticalSingleListItemsProp {
   menuTitle: string;
-  menuItem: {
-    displayTitle: string;
-    link: string;
-  };
+  menuItem: DefaultMenuItemProps;
 }
 
 interface DefaultOneImageProductCardProps {
@@ -77,4 +73,24 @@ interface DefaultMultiImageProductCardProps {
   }[];
   ctaText: string;
   ctaLink: string;
+}
+
+interface DefaultImageProductCardProps {
+  productName: string;
+  productResouceLink: string;
+  contentType?: "image" | "video";
+  ctaLink: string;
+}
+
+interface DefaultVideoProductCardProps {
+  productName: string;
+  productResouceLink: string;
+  ctaLink?: string;
+}
+
+interface DefaultCarouselBarProps {
+  title: string;
+  ctaText: string;
+  ctaLink: string;
+  productItems: DefaultImageProductCardProps[];
 }
