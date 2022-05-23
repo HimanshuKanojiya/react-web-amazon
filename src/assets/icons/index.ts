@@ -6,6 +6,7 @@ import { BsInfoLg, BsExclamationLg, BsGlobe } from "react-icons/bs";
 import { RiAlertLine } from "react-icons/ri";
 import { IoLocationOutline } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import AmazonNavSprite from "./amazon-nav-sprite.png";
 
 export const amazonIcons = {
@@ -22,4 +23,6 @@ export const amazonIcons = {
   LocationIcon: IoLocationOutline,
   SearchIcon: GoSearch,
   HamburgerMenu: GiHamburgerMenu,
+  LeftIcon: FaChevronLeft,
+  RightIcon: FaChevronRight,
 };

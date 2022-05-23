@@ -8,6 +8,6 @@ export const ImageProductCardContainer = styled.div`
   & img {
     width: 280px;
     height: 200px;
-    object-fit: fill;
+    object-fit: cover;
   }
 `;
